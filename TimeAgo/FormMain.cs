@@ -23,15 +23,18 @@ namespace TimeAgo
     public readonly Dictionary<string, string> DataFile = new Dictionary<string, string>();
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
+    private ListOfEvent AllListEvent = new ListOfEvent();
 
     private void QuitToolStripMenuItemClick(object sender, EventArgs e)
     {
+      //We save settings before quitting
       SaveWindowValue();
       Application.Exit();
     }
 
     private void AboutToolStripMenuItemClick(object sender, EventArgs e)
     {
+      // create a new instance of aboutBox and display it
       AboutBoxApplication aboutBoxApplication = new AboutBoxApplication();
       aboutBoxApplication.ShowDialog();
     }
@@ -45,6 +48,7 @@ namespace TimeAgo
 
     private void FormMainLoad(object sender, EventArgs e)
     {
+      //We load all settings at the start of the application
       LoadSettingsAtStartup();
     }
 
@@ -60,7 +64,8 @@ namespace TimeAgo
 
     private void LoadList()
     {
-      
+      // we load the XML data file into the AllListEvent variable
+
     }
 
     private static void CheckDataFile()
