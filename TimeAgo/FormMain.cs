@@ -20,6 +20,7 @@ namespace TimeAgo
 
     public readonly Dictionary<string, string> LanguageDicoEn = new Dictionary<string, string>();
     public readonly Dictionary<string, string> LanguageDicoFr = new Dictionary<string, string>();
+    public readonly Dictionary<string, string> DataFile = new Dictionary<string, string>();
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
 
@@ -53,6 +54,13 @@ namespace TimeAgo
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
+      CheckDataFile();
+    }
+
+    private void CheckDataFile()
+    {
+      // check if data file is present, if not create it
+
     }
 
     private void LoadConfigurationOptions()
@@ -704,6 +712,11 @@ namespace TimeAgo
       {
         // do something
       }
+    }
+
+    private void ButtonAddClick(object sender, EventArgs e)
+    {
+
     }
   }
 }
