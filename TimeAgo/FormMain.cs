@@ -55,6 +55,12 @@ namespace TimeAgo
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
       CheckDataFile();
+      LoadList();
+    }
+
+    private void LoadList()
+    {
+      
     }
 
     private static void CheckDataFile()
