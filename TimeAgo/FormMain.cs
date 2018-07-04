@@ -57,11 +57,37 @@ namespace TimeAgo
       CheckDataFile();
     }
 
-    private void CheckDataFile()
+    private static void CheckDataFile()
     {
       // check if data file is present, if not create it
-
+      if (!File.Exists("DataFile.xml"))
+      {
+        CreateDataFile();
+      }
     }
+
+    private static void CreateDataFile()
+    {
+      List<string> minimumFile = new List<string>
+      {
+        "<?xml version=\"1.0\" encoding=\"utf-8\" ?>",
+        "<items>",
+        "<item>",
+        "<title>Title1</title>",
+        "<date>04/07/2018</date>",
+        "</item>",
+        "</items>"
+      };
+
+      StreamWriter sw = new StreamWriter(Settings.Default.LanguageFileName);
+      foreach (string item in minimumFile)
+      {
+        sw.WriteLine(item);
+      }
+
+      sw.Close();
+    }
+
 
     private void LoadConfigurationOptions()
     {
