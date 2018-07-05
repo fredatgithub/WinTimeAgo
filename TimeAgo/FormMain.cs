@@ -29,7 +29,14 @@ namespace TimeAgo
     {
       //We save settings before quitting
       SaveWindowValue();
+      SaveDataFile();
       Application.Exit();
+    }
+
+    private static void SaveDataFile()
+    {
+      //We save all new data to XML file
+
     }
 
     private void AboutToolStripMenuItemClick(object sender, EventArgs e)
@@ -60,12 +67,53 @@ namespace TimeAgo
       SetLanguage(Settings.Default.LastLanguageUsed);
       CheckDataFile();
       LoadList();
+      dateTimePickerMain.Value = DateTime.Now;
     }
 
     private void LoadList()
     {
       // we load the XML data file into the AllListEvent variable
+      string fileName = "DataFile.xml";
+      XDocument xmlDoc;
+      try
+      {
+        xmlDoc = XDocument.Load(fileName);
+      }
+      catch (Exception exception)
+      {
+        MessageBox.Show(exception.Message);
+        return;
+      }
 
+      var result = from node in xmlDoc.Descendants("item")
+        where node.HasElements
+        let xElementTitle = node.Element("title")
+        where xElementTitle != null
+        let xElementDate = node.Element("date")
+        where xElementDate != null
+        select new
+        {
+          titleValue = xElementTitle.Value,
+          dateValue = xElementDate.Value,
+        };
+
+      foreach (var q in result)
+      {
+        //if (!_allQuotes.ListOfQuotes.Contains(new Quote(q.authorValue, q.languageValue, q.sentenceValue)) &&
+        //    q.authorValue != string.Empty && q.languageValue != string.Empty && q.sentenceValue != string.Empty)
+        //{
+          DateTime tmpDate = DateTime.Now;
+          DateTime.TryParse(q.dateValue, out tmpDate);
+          AllListEvent.ListOfEvents.Add(new Event(q.titleValue, tmpDate));
+        //}
+      }
+
+      listBoxMain.Items.Clear();
+      listBoxSubItems.Items.Clear();
+      foreach (Event item in AllListEvent.ListOfEvents.ToList())
+      {
+        listBoxMain.Items.Add(item.Title);
+      }
     }
 
     private static void CheckDataFile()
@@ -676,7 +724,7 @@ namespace TimeAgo
         return;
       }
 
-      int position = listOfControls[0].Width + 33; // 33 is the initial padding
+      int position = listOfControls[0].Width + 33; // 33 is the initial padding, can be increased
       bool isFirstControl = true;
       foreach (Control control in listOfControls)
       {
@@ -694,8 +742,7 @@ namespace TimeAgo
 
     private void AdjustAllControls()
     {
-      AdjustControls(); // insert here all labels, textboxes and buttons, one method per line of controls
-    }
+      AdjustControls();}
 
     private void OptionsToolStripMenuItemClick(object sender, EventArgs e)
     {
@@ -707,7 +754,7 @@ namespace TimeAgo
       }
     }
 
-    private static void SetButtonEnabled(Button button, params Control[] controls)
+    private static void SetButtonEnabled(Control button, params Control[] controls)
     {
       bool result = true;
       foreach (Control ctrl in controls)
@@ -743,16 +790,42 @@ namespace TimeAgo
       button.Enabled = result;
     }
 
-    private void TextBoxNameKeyDown(object sender, KeyEventArgs e)
+    private void ButtonAddClick(object sender, EventArgs e)
     {
-      if (e.KeyCode == Keys.Enter)
+      if (textBoxTitle.Text == string.Empty)
       {
-        // do something
+        DisplayMessage("A title is necessary", "No Title", MessageBoxButtons.OK);
+        return;
+      }
+
+      Event oneEvent = new Event(textBoxTitle.Text, dateTimePickerMain.Value);
+      AllListEvent.ListOfEvents.Add(oneEvent);
+      RefreshAllEvents();
+    }
+
+    private void RefreshAllEvents()
+    {
+      listBoxMain.Items.Clear();
+      foreach (Event item in AllListEvent.ListOfEvents.ToList())
+      {
+        listBoxMain.Items.Add(item.Title);
       }
     }
 
-    private void ButtonAddClick(object sender, EventArgs e)
+    private void listBoxMain_SelectedIndexChanged(object sender, EventArgs e)
     {
+      if (!listBoxSubItems.Visible)
+      {
+        listBoxSubItems.Visible = true;
+      }
+
+      if (!buttonDelete.Visible)
+      {
+        buttonDelete.Visible = true;
+      }
+
+      // we display sub items from selected one
+
 
     }
   }

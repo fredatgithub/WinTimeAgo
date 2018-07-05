@@ -66,6 +66,11 @@
       this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.buttonAdd = new System.Windows.Forms.Button();
+      this.listBoxMain = new System.Windows.Forms.ListBox();
+      this.listBoxSubItems = new System.Windows.Forms.ListBox();
+      this.buttonDelete = new System.Windows.Forms.Button();
+      this.textBoxTitle = new System.Windows.Forms.TextBox();
+      this.dateTimePickerMain = new System.Windows.Forms.DateTimePicker();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -82,7 +87,7 @@
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-      this.menuStrip1.Size = new System.Drawing.Size(683, 24);
+      this.menuStrip1.Size = new System.Drawing.Size(614, 24);
       this.menuStrip1.TabIndex = 1;
       this.menuStrip1.Text = "menuStrip1";
       // 
@@ -367,23 +372,69 @@
       // 
       // buttonAdd
       // 
-      this.buttonAdd.Location = new System.Drawing.Point(27, 339);
+      this.buttonAdd.Location = new System.Drawing.Point(27, 404);
       this.buttonAdd.Name = "buttonAdd";
-      this.buttonAdd.Size = new System.Drawing.Size(272, 23);
+      this.buttonAdd.Size = new System.Drawing.Size(263, 23);
       this.buttonAdd.TabIndex = 2;
       this.buttonAdd.Text = "ADD";
       this.buttonAdd.UseVisualStyleBackColor = true;
       this.buttonAdd.Click += new System.EventHandler(this.ButtonAddClick);
       // 
+      // listBoxMain
+      // 
+      this.listBoxMain.FormattingEnabled = true;
+      this.listBoxMain.Location = new System.Drawing.Point(27, 66);
+      this.listBoxMain.Name = "listBoxMain";
+      this.listBoxMain.Size = new System.Drawing.Size(263, 264);
+      this.listBoxMain.TabIndex = 3;
+      this.listBoxMain.SelectedIndexChanged += new System.EventHandler(this.listBoxMain_SelectedIndexChanged);
+      // 
+      // listBoxSubItems
+      // 
+      this.listBoxSubItems.FormattingEnabled = true;
+      this.listBoxSubItems.Location = new System.Drawing.Point(316, 66);
+      this.listBoxSubItems.Name = "listBoxSubItems";
+      this.listBoxSubItems.Size = new System.Drawing.Size(263, 264);
+      this.listBoxSubItems.TabIndex = 4;
+      // 
+      // buttonDelete
+      // 
+      this.buttonDelete.Location = new System.Drawing.Point(27, 433);
+      this.buttonDelete.Name = "buttonDelete";
+      this.buttonDelete.Size = new System.Drawing.Size(263, 23);
+      this.buttonDelete.TabIndex = 5;
+      this.buttonDelete.Text = "DELETE";
+      this.buttonDelete.UseVisualStyleBackColor = true;
+      // 
+      // textBoxTitle
+      // 
+      this.textBoxTitle.Location = new System.Drawing.Point(27, 346);
+      this.textBoxTitle.Name = "textBoxTitle";
+      this.textBoxTitle.Size = new System.Drawing.Size(263, 20);
+      this.textBoxTitle.TabIndex = 6;
+      // 
+      // dateTimePickerMain
+      // 
+      this.dateTimePickerMain.Location = new System.Drawing.Point(27, 373);
+      this.dateTimePickerMain.Name = "dateTimePickerMain";
+      this.dateTimePickerMain.Size = new System.Drawing.Size(263, 20);
+      this.dateTimePickerMain.TabIndex = 7;
+      this.dateTimePickerMain.Value = new System.DateTime(2018, 7, 5, 14, 52, 52, 0);
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(683, 434);
+      this.ClientSize = new System.Drawing.Size(614, 472);
+      this.Controls.Add(this.dateTimePickerMain);
+      this.Controls.Add(this.textBoxTitle);
+      this.Controls.Add(this.buttonDelete);
+      this.Controls.Add(this.listBoxSubItems);
+      this.Controls.Add(this.listBoxMain);
       this.Controls.Add(this.buttonAdd);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
-      this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.Margin = new System.Windows.Forms.Padding(2);
       this.Name = "FormMain";
       this.ShowIcon = false;
       this.Text = "Time ago";
@@ -436,5 +487,10 @@
     private System.Windows.Forms.ToolStripMenuItem MediumToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem LargeToolStripMenuItem;
     private System.Windows.Forms.Button buttonAdd;
+    private System.Windows.Forms.ListBox listBoxMain;
+    private System.Windows.Forms.ListBox listBoxSubItems;
+    private System.Windows.Forms.Button buttonDelete;
+    private System.Windows.Forms.TextBox textBoxTitle;
+    private System.Windows.Forms.DateTimePicker dateTimePickerMain;
   }
 }
