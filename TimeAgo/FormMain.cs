@@ -23,7 +23,7 @@ namespace TimeAgo
     public readonly Dictionary<string, string> DataFile = new Dictionary<string, string>();
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
-    private ListOfEvent AllListEvent = new ListOfEvent();
+    private readonly GlobalList AllEvent = new GlobalList();
 
     private void QuitToolStripMenuItemClick(object sender, EventArgs e)
     {
@@ -86,33 +86,29 @@ namespace TimeAgo
       }
 
       var result = from node in xmlDoc.Descendants("item")
-        where node.HasElements
-        let xElementTitle = node.Element("title")
-        where xElementTitle != null
-        let xElementDate = node.Element("date")
-        where xElementDate != null
-        select new
-        {
-          titleValue = xElementTitle.Value,
-          dateValue = xElementDate.Value,
-        };
+                   where node.HasElements
+                   let xElementTitle = node.Element("title")
+                   where xElementTitle != null
+                   let xElementDate = node.Element("date")
+                   where xElementDate != null
+                   select new
+                   {
+                     titleValue = xElementTitle.Value,
+                     dateValue = xElementDate.Value,
+                   };
 
       foreach (var q in result)
       {
-        //if (!_allQuotes.ListOfQuotes.Contains(new Quote(q.authorValue, q.languageValue, q.sentenceValue)) &&
-        //    q.authorValue != string.Empty && q.languageValue != string.Empty && q.sentenceValue != string.Empty)
-        //{
-          DateTime tmpDate = DateTime.Now;
-          DateTime.TryParse(q.dateValue, out tmpDate);
-          AllListEvent.ListOfEvents.Add(new Event(q.titleValue, tmpDate));
-        //}
+        DateTime tmpDate = DateTime.Now;
+        DateTime.TryParse(q.dateValue, out tmpDate);
+        AllEvent.AddOneEvent(new Event(q.titleValue, tmpDate));
       }
 
       listBoxMain.Items.Clear();
       listBoxSubItems.Items.Clear();
-      foreach (Event item in AllListEvent.ListOfEvents.ToList())
+      foreach (string item in AllEvent.GlobalListOfEvents.Keys.ToList())
       {
-        listBoxMain.Items.Add(item.Title);
+        listBoxMain.Items.Add(item);
       }
     }
 
@@ -742,7 +738,8 @@ namespace TimeAgo
 
     private void AdjustAllControls()
     {
-      AdjustControls();}
+      AdjustControls();
+    }
 
     private void OptionsToolStripMenuItemClick(object sender, EventArgs e)
     {
@@ -799,16 +796,16 @@ namespace TimeAgo
       }
 
       Event oneEvent = new Event(textBoxTitle.Text, dateTimePickerMain.Value);
-      AllListEvent.ListOfEvents.Add(oneEvent);
+      AllEvent.AddOneEvent(oneEvent);
       RefreshAllEvents();
     }
 
     private void RefreshAllEvents()
     {
       listBoxMain.Items.Clear();
-      foreach (Event item in AllListEvent.ListOfEvents.ToList())
+      foreach (string item in AllEvent.GlobalListOfEvents.Keys.ToList())
       {
-        listBoxMain.Items.Add(item.Title);
+        listBoxMain.Items.Add(item);
       }
     }
 
@@ -825,7 +822,11 @@ namespace TimeAgo
       }
 
       // we display sub items from selected one
-
+      listBoxSubItems.Items.Clear();
+      foreach (var item in AllEvent.GlobalListOfEvents[listBoxMain.SelectedItem.ToString()])
+      {
+        listBoxSubItems.Items.Add(item.DateOfEvent);
+      }
 
     }
   }

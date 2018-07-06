@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="ConfigurationOptions.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="Events.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +68,7 @@
     <Compile Include="FormOptions.Designer.cs">
       <DependentUpon>FormOptions.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalList.cs" />
     <Compile Include="Language.cs" />
     <Compile Include="ListOfEvent.cs" />
     <Compile Include="Program.cs" />
