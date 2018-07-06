@@ -142,8 +142,7 @@ namespace TimeAgo
 
       sw.Close();
     }
-
-
+    
     private void LoadConfigurationOptions()
     {
       _configurationOptions.Option1Name = Settings.Default.Option1Name;
@@ -533,7 +532,7 @@ namespace TimeAgo
 
     private void CutToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxTitle }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -543,7 +542,7 @@ namespace TimeAgo
 
     private void CopyToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxTitle }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -553,7 +552,7 @@ namespace TimeAgo
 
     private void PasteToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxTitle }); 
       var tb = focusedControl as TextBox;
       if (tb != null)
       {
@@ -563,14 +562,18 @@ namespace TimeAgo
 
     private void SelectAllToolStripMenuItemClick(object sender, EventArgs e)
     {
-      Control focusedControl = FindFocusedControl(new List<Control> { }); // add your controls in the List
+      Control focusedControl = FindFocusedControl(new List<Control> { textBoxTitle }); 
       TextBox control = focusedControl as TextBox;
-      if (control != null) control.SelectAll();
+      control?.SelectAll();
     }
 
     private void CutToClipboard(TextBoxBase tb, string errorMessage = "nothing")
     {
-      if (tb != ActiveControl) return;
+      if (tb != ActiveControl)
+      {
+        return;
+      }
+
       if (tb.Text == string.Empty)
       {
         DisplayMessage(Translate("ThereIs") + Punctuation.OneSpace +
@@ -593,7 +596,11 @@ namespace TimeAgo
 
     private void CopyToClipboard(TextBoxBase tb, string message = "nothing")
     {
-      if (tb != ActiveControl) return;
+      if (tb != ActiveControl)
+      {
+        return;
+      }
+
       if (tb.Text == string.Empty)
       {
         DisplayMessage(Translate("ThereIsNothingToCopy") + Punctuation.OneSpace,
@@ -611,12 +618,12 @@ namespace TimeAgo
       Clipboard.SetText(tb.SelectedText);
     }
 
-    private void PasteFromClipboard(TextBoxBase tb)
+    private void PasteFromClipboard(TextBoxBase textBox)
     {
-      if (tb != ActiveControl) return;
-      var selectionIndex = tb.SelectionStart;
-      tb.SelectedText = Clipboard.GetText();
-      tb.SelectionStart = selectionIndex + Clipboard.GetText().Length;
+      if (textBox != ActiveControl) return;
+      var selectionIndex = textBox.SelectionStart;
+      textBox.SelectedText = Clipboard.GetText();
+      textBox.SelectionStart = selectionIndex + Clipboard.GetText().Length;
     }
 
     private void DisplayMessage(string message, string title, MessageBoxButtons buttons)
@@ -828,6 +835,14 @@ namespace TimeAgo
         listBoxSubItems.Items.Add(item.DateOfEvent);
       }
 
+      textBoxTitle.Text = listBoxMain.SelectedItem.ToString();
+    }
+
+    private void buttonDelete_Click(object sender, EventArgs e)
+    {
+      AllEvent.GlobalListOfEvents.Remove(listBoxMain.SelectedItem.ToString());
+      RefreshAllEvents();
+      listBoxSubItems.Items.Clear();
     }
   }
 }
