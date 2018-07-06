@@ -805,6 +805,13 @@ namespace TimeAgo
       Event oneEvent = new Event(textBoxTitle.Text, dateTimePickerMain.Value);
       AllEvent.AddOneEvent(oneEvent);
       RefreshAllEvents();
+      listBoxMain.SetSelected(GetIndexOf(textBoxTitle.Text), true);
+      UpdateSubList();
+    }
+
+    private int GetIndexOf(string text)
+    {
+      return listBoxMain.Items.Contains(text) ? listBoxMain.Items.IndexOf(text) : 0;
     }
 
     private void RefreshAllEvents()
@@ -828,18 +835,29 @@ namespace TimeAgo
         buttonDelete.Visible = true;
       }
 
+      UpdateSubList();
+      textBoxTitle.Text = listBoxMain.SelectedItem.ToString();
+    }
+
+    private void UpdateSubList()
+    {
       // we display sub items from selected one
+      if (listBoxMain.SelectedIndex == -1) return;
       listBoxSubItems.Items.Clear();
       foreach (var item in AllEvent.GlobalListOfEvents[listBoxMain.SelectedItem.ToString()])
       {
         listBoxSubItems.Items.Add(item.DateOfEvent);
       }
-
-      textBoxTitle.Text = listBoxMain.SelectedItem.ToString();
     }
 
     private void buttonDelete_Click(object sender, EventArgs e)
     {
+      if (MessageBox.Show("Are you sure you want to remove this Event?", "Confirmation", MessageBoxButtons.YesNo) !=
+          DialogResult.Yes)
+      {
+        return;
+      }
+
       AllEvent.GlobalListOfEvents.Remove(listBoxMain.SelectedItem.ToString());
       RefreshAllEvents();
       listBoxSubItems.Items.Clear();
