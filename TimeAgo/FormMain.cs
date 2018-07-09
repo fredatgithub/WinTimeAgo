@@ -904,6 +904,14 @@ namespace TimeAgo
 
       UpdateSubList();
       textBoxTitle.Text = listBoxMain.SelectedItem.ToString();
+      listBoxSubItems.SelectedIndex = 0;
+      textBoxTimeAgo.Text = CreateTimeSentence(listBoxSubItems.SelectedItem);
+    }
+
+    private string CreateTimeSentence(object selectedItem)
+    {
+      // create a string formatted like 3 days 2 hours ago
+
     }
 
     private void UpdateSubList()

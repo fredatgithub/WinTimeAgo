@@ -71,6 +71,7 @@
       this.buttonDelete = new System.Windows.Forms.Button();
       this.textBoxTitle = new System.Windows.Forms.TextBox();
       this.dateTimePickerMain = new System.Windows.Forms.DateTimePicker();
+      this.textBoxTimeAgo = new System.Windows.Forms.TextBox();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -422,11 +423,20 @@
       this.dateTimePickerMain.TabIndex = 7;
       this.dateTimePickerMain.Value = new System.DateTime(2018, 7, 5, 14, 52, 52, 0);
       // 
+      // textBoxTimeAgo
+      // 
+      this.textBoxTimeAgo.Location = new System.Drawing.Point(27, 40);
+      this.textBoxTimeAgo.Name = "textBoxTimeAgo";
+      this.textBoxTimeAgo.ReadOnly = true;
+      this.textBoxTimeAgo.Size = new System.Drawing.Size(552, 20);
+      this.textBoxTimeAgo.TabIndex = 8;
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(614, 472);
+      this.Controls.Add(this.textBoxTimeAgo);
       this.Controls.Add(this.dateTimePickerMain);
       this.Controls.Add(this.textBoxTitle);
       this.Controls.Add(this.buttonDelete);
@@ -493,5 +503,6 @@
     private System.Windows.Forms.Button buttonDelete;
     private System.Windows.Forms.TextBox textBoxTitle;
     private System.Windows.Forms.DateTimePicker dateTimePickerMain;
+    private System.Windows.Forms.TextBox textBoxTimeAgo;
   }
 }
