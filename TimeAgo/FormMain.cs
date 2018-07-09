@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using TimeAgo.Properties;
@@ -38,10 +39,70 @@ namespace TimeAgo
       Application.Exit();
     }
 
-    private static void SaveDataFile()
+    private void SaveDataFile()
     {
       //We save all new data to XML file
+      try
+      {
+        if (File.Exists(Settings.Default.DataFileName))
+        {
+          File.Delete(Settings.Default.DataFileName);
+        }
+      }
+      catch (Exception exception)
+      {
+        DisplayMessage($"Error while deleting {Settings.Default.DataFileName}, the exception is {exception.Message}", "Deletion Error", MessageBoxButtons.OK);
+        return;
+      }
 
+      StringBuilder finalFile = new StringBuilder();
+      finalFile.Append(@"<?xml version=""1.0"" encoding=""utf-8"" ?>");
+      finalFile.Append(Environment.NewLine);
+      finalFile.Append("<items>");
+      finalFile.Append(Environment.NewLine);
+      foreach (var item in listBoxMain.Items)
+      {
+        foreach (var subItem in AllEvent.GlobalListOfEvents[item.ToString()])
+        {
+          finalFile.Append(CreateTagNode(subItem.Title, subItem.DateOfEvent));
+        }
+      }
+
+      finalFile.Append("</items>");
+      finalFile.Append(Environment.NewLine);
+
+      try
+      {
+        using (StreamWriter sw = new StreamWriter(Settings.Default.DataFileName))
+        {
+          sw.WriteLine(finalFile.ToString());
+        }
+      }
+      catch (Exception exception)
+      {
+        DisplayMessage($"Error while saving the file  {Settings.Default.DataFileName}, the exception is {exception.Message}", "Save Error", MessageBoxButtons.OK);
+        return;
+      }
+
+      DisplayMessage("The data file has been saved correctly", "File Saved", MessageBoxButtons.OK);
+    }
+
+    private static string CreateTagNode(string title, DateTime dateEvent)
+    {
+      StringBuilder result = new StringBuilder();
+      result.Append("<item>");
+      result.Append(Environment.NewLine);
+      result.Append("<title>");
+      result.Append(title);
+      result.Append("</title>");
+      result.Append(Environment.NewLine);
+      result.Append("<date>");
+      result.Append(dateEvent); // check if format is needed
+      result.Append("</date>");
+      result.Append(Environment.NewLine);
+      result.Append("</item>");
+      result.Append(Environment.NewLine);
+      return result.ToString();
     }
 
     private void AboutToolStripMenuItemClick(object sender, EventArgs e)
@@ -99,7 +160,7 @@ namespace TimeAgo
                    select new
                    {
                      titleValue = xElementTitle.Value,
-                     dateValue = xElementDate.Value,
+                     dateValue = xElementDate.Value
                    };
 
       foreach (var q in result)
@@ -848,8 +909,13 @@ namespace TimeAgo
     private void UpdateSubList()
     {
       // we display sub items from selected one
-      if (listBoxMain.SelectedIndex == -1) return;
+      if (listBoxMain.SelectedIndex == -1)
+      {
+        return;
+      }
+
       listBoxSubItems.Items.Clear();
+
       foreach (var item in AllEvent.GlobalListOfEvents[listBoxMain.SelectedItem.ToString()])
       {
         listBoxSubItems.Items.Add(item.DateOfEvent);
