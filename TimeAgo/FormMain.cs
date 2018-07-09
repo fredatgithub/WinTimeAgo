@@ -24,12 +24,17 @@ namespace TimeAgo
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
     private readonly GlobalList AllEvent = new GlobalList();
+    private bool DataFileHasBeenModified = false;
 
     private void QuitToolStripMenuItemClick(object sender, EventArgs e)
     {
       //We save settings before quitting
       SaveWindowValue();
-      SaveDataFile();
+      if (DataFileHasBeenModified)
+      {
+        SaveDataFile();
+      }
+      
       Application.Exit();
     }
 
@@ -73,7 +78,7 @@ namespace TimeAgo
     private void LoadList()
     {
       // we load the XML data file into the AllListEvent variable
-      string fileName = "DataFile.xml";
+      string fileName = Settings.Default.DataFileName;
       XDocument xmlDoc;
       try
       {
@@ -115,7 +120,7 @@ namespace TimeAgo
     private static void CheckDataFile()
     {
       // check if data file is present, if not create it
-      if (!File.Exists("DataFile.xml"))
+      if (!File.Exists(Settings.Default.DataFileName))
       {
         CreateDataFile();
       }
@@ -134,7 +139,7 @@ namespace TimeAgo
         "</items>"
       };
 
-      StreamWriter sw = new StreamWriter(Settings.Default.LanguageFileName);
+      StreamWriter sw = new StreamWriter(Settings.Default.DataFileName);
       foreach (string item in minimumFile)
       {
         sw.WriteLine(item);
@@ -807,6 +812,7 @@ namespace TimeAgo
       RefreshAllEvents();
       listBoxMain.SetSelected(GetIndexOf(textBoxTitle.Text), true);
       UpdateSubList();
+      DataFileHasBeenModified = true;
     }
 
     private int GetIndexOf(string text)
@@ -861,6 +867,7 @@ namespace TimeAgo
       AllEvent.GlobalListOfEvents.Remove(listBoxMain.SelectedItem.ToString());
       RefreshAllEvents();
       listBoxSubItems.Items.Clear();
+      DataFileHasBeenModified = true;
     }
   }
 }
