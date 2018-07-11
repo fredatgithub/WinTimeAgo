@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TimeAgo;
+using System;
 
 namespace UnitTestTimeAgo
 {
@@ -10,8 +10,8 @@ namespace UnitTestTimeAgo
     [TestMethod]
     public void TestMethodCreateTimeSentence()
     {
-      DateTime source = new DateTime(2018, 7, 10);
-      string expected = $"20 hours 58 minutes 49 seconds 272 milliseconds";
+      DateTime source = DateTime.Now.AddMinutes(-1);
+      string expected = $"1 minute 49 seconds 272 milliseconds";
       string result = FormMain.CreateTimeSentence(source);
       Assert.AreEqual(expected, result);
     }

@@ -373,17 +373,20 @@
       // 
       // buttonAdd
       // 
-      this.buttonAdd.Location = new System.Drawing.Point(27, 404);
+      this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonAdd.Location = new System.Drawing.Point(27, 409);
       this.buttonAdd.Name = "buttonAdd";
-      this.buttonAdd.Size = new System.Drawing.Size(263, 23);
+      this.buttonAdd.Size = new System.Drawing.Size(263, 25);
       this.buttonAdd.TabIndex = 2;
-      this.buttonAdd.Text = "ADD";
+      this.buttonAdd.Text = "ADD THIS EVENT";
       this.buttonAdd.UseVisualStyleBackColor = true;
       this.buttonAdd.Click += new System.EventHandler(this.ButtonAddClick);
       // 
       // listBoxMain
       // 
+      this.listBoxMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.listBoxMain.FormattingEnabled = true;
+      this.listBoxMain.ItemHeight = 20;
       this.listBoxMain.Location = new System.Drawing.Point(27, 66);
       this.listBoxMain.Name = "listBoxMain";
       this.listBoxMain.Size = new System.Drawing.Size(263, 264);
@@ -392,7 +395,9 @@
       // 
       // listBoxSubItems
       // 
+      this.listBoxSubItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.listBoxSubItems.FormattingEnabled = true;
+      this.listBoxSubItems.ItemHeight = 20;
       this.listBoxSubItems.Location = new System.Drawing.Point(316, 66);
       this.listBoxSubItems.Name = "listBoxSubItems";
       this.listBoxSubItems.Size = new System.Drawing.Size(263, 264);
@@ -400,42 +405,46 @@
       // 
       // buttonDelete
       // 
-      this.buttonDelete.Location = new System.Drawing.Point(27, 433);
+      this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.buttonDelete.Location = new System.Drawing.Point(27, 445);
       this.buttonDelete.Name = "buttonDelete";
-      this.buttonDelete.Size = new System.Drawing.Size(263, 23);
+      this.buttonDelete.Size = new System.Drawing.Size(263, 25);
       this.buttonDelete.TabIndex = 5;
-      this.buttonDelete.Text = "DELETE";
+      this.buttonDelete.Text = "DELETE THIS EVENT";
       this.buttonDelete.UseVisualStyleBackColor = true;
       this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
       // 
       // textBoxTitle
       // 
+      this.textBoxTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxTitle.Location = new System.Drawing.Point(27, 346);
       this.textBoxTitle.Name = "textBoxTitle";
-      this.textBoxTitle.Size = new System.Drawing.Size(263, 20);
+      this.textBoxTitle.Size = new System.Drawing.Size(263, 26);
       this.textBoxTitle.TabIndex = 6;
       // 
       // dateTimePickerMain
       // 
-      this.dateTimePickerMain.Location = new System.Drawing.Point(27, 373);
+      this.dateTimePickerMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.dateTimePickerMain.Location = new System.Drawing.Point(27, 378);
       this.dateTimePickerMain.Name = "dateTimePickerMain";
-      this.dateTimePickerMain.Size = new System.Drawing.Size(263, 20);
+      this.dateTimePickerMain.Size = new System.Drawing.Size(263, 26);
       this.dateTimePickerMain.TabIndex = 7;
       this.dateTimePickerMain.Value = new System.DateTime(2018, 7, 5, 14, 52, 52, 0);
       // 
       // textBoxTimeAgo
       // 
+      this.textBoxTimeAgo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxTimeAgo.Location = new System.Drawing.Point(27, 40);
       this.textBoxTimeAgo.Name = "textBoxTimeAgo";
       this.textBoxTimeAgo.ReadOnly = true;
-      this.textBoxTimeAgo.Size = new System.Drawing.Size(552, 20);
+      this.textBoxTimeAgo.Size = new System.Drawing.Size(552, 26);
       this.textBoxTimeAgo.TabIndex = 8;
       // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(614, 472);
+      this.ClientSize = new System.Drawing.Size(614, 478);
       this.Controls.Add(this.textBoxTimeAgo);
       this.Controls.Add(this.dateTimePickerMain);
       this.Controls.Add(this.textBoxTitle);

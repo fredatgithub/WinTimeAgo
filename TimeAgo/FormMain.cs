@@ -912,33 +912,38 @@ namespace TimeAgo
     {
       // create a string formatted like 3 days 2 hours ago
       StringBuilder result = new StringBuilder();
-      TimeSpan numberOftime = DateTime.Now - thedate;
-      if (numberOftime.Days > 0)
+      TimeSpan timeSpan = DateTime.Now - thedate;
+      if (timeSpan.Days > 0)
       {
-        result.Append($"{numberOftime.Days} days ");
+        result.Append($"{timeSpan.Days} day{Plural(timeSpan.Days)} ");
       }
 
-      if (numberOftime.Hours > 0)
+      if (timeSpan.Hours > 0)
       {
-        result.Append($"{numberOftime.Hours} hours ");
+        result.Append($"{timeSpan.Hours} hour{Plural(timeSpan.Hours)} ");
       }
 
-      if (numberOftime.Minutes > 0)
+      if (timeSpan.Minutes > 0)
       {
-        result.Append($"{numberOftime.Minutes} minutes ");
+        result.Append($"{timeSpan.Minutes} minute{Plural(timeSpan.Minutes)} ");
       }
 
-      if (numberOftime.Seconds > 0)
+      if (timeSpan.Seconds > 0)
       {
-        result.Append($"{numberOftime.Seconds} seconds ");
+        result.Append($"{timeSpan.Seconds} second{Plural(timeSpan.Seconds)} ");
       }
 
-      if (numberOftime.Milliseconds > 0)
+      if (timeSpan.Milliseconds > 0)
       {
-        result.Append($"{numberOftime.Milliseconds} milliseconds");
+        result.Append($"{timeSpan.Milliseconds} millisecond{Plural(timeSpan.Milliseconds)}");
       }
 
       return result.ToString();
+    }
+
+    private static string Plural(int number)
+    {
+      return number > 1 ? "s" : string.Empty;
     }
 
     private void UpdateSubList()

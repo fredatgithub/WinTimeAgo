@@ -10,6 +10,5 @@ namespace TimeAgo
     {
       ListOfEvents = new List<Event>();
     }
-    
   }
 }
