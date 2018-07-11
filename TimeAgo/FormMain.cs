@@ -913,20 +913,25 @@ namespace TimeAgo
       // create a string formatted like 3 days 2 hours ago
       StringBuilder result = new StringBuilder();
       TimeSpan timeSpan = DateTime.Now - thedate;
+      
+      var totalDays = (DateTime.Now - thedate).TotalDays;
+      var totalYears = Math.Truncate(totalDays / 365);
+      var totalMonths = Math.Truncate((totalDays % 365) / 30);
+      var remainingDays = Math.Truncate((totalDays % 365) % 30);
 
-      if (timeSpan.Days > 365)
+      if (totalYears > 1)
       {
-        result.Append($"{Math.Abs(timeSpan.Days / 365)} year{Plural(Math.Abs(timeSpan.Days / 365))} ");
+        result.Append($"{totalYears} year{Plural((int)totalYears)} ");
       }
 
-      if (timeSpan.Days > 29)
+      if (totalMonths > 1)
       {
-        result.Append($"{Math.Abs(timeSpan.Days/30)} month{Plural(Math.Abs(timeSpan.Days/30))} ");
+        result.Append($"{totalMonths} month{Plural((int)totalMonths)} ");
       }
 
-      if (timeSpan.Days > 0 && result.ToString().Length != 0) // substract days TODO
+      if (timeSpan.Days > 0 && result.ToString().Length != 0)
       {
-        //result.Append($"{timeSpan.Days} day{Plural(timeSpan.Days)} "); // TODO
+        result.Append($"{remainingDays} day{Plural((int)remainingDays)} ");
       }
 
       if (timeSpan.Days > 0 && result.ToString().Length == 0)
