@@ -913,7 +913,23 @@ namespace TimeAgo
       // create a string formatted like 3 days 2 hours ago
       StringBuilder result = new StringBuilder();
       TimeSpan timeSpan = DateTime.Now - thedate;
-      if (timeSpan.Days > 0)
+
+      if (timeSpan.Days > 365)
+      {
+        result.Append($"{Math.Abs(timeSpan.Days / 365)} year{Plural(Math.Abs(timeSpan.Days / 365))} ");
+      }
+
+      if (timeSpan.Days > 29)
+      {
+        result.Append($"{Math.Abs(timeSpan.Days/30)} month{Plural(Math.Abs(timeSpan.Days/30))} ");
+      }
+
+      if (timeSpan.Days > 0 && result.ToString().Length != 0) // substract days TODO
+      {
+        //result.Append($"{timeSpan.Days} day{Plural(timeSpan.Days)} "); // TODO
+      }
+
+      if (timeSpan.Days > 0 && result.ToString().Length == 0)
       {
         result.Append($"{timeSpan.Days} day{Plural(timeSpan.Days)} ");
       }
