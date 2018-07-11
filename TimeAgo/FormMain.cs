@@ -921,42 +921,42 @@ namespace TimeAgo
 
       if (totalYears > 0)
       {
-        result.Append($"{totalYears} {Translate("year")}{Plural((int)totalYears)} "); // TODO translation year
+        result.Append($"{totalYears} {Translate("year")}{Plural((int)totalYears)} "); 
       }
 
       if (totalMonths > 0)
       {
-        result.Append($"{totalMonths} month{Plural((int)totalMonths)} ");
+        result.Append($"{totalMonths} {Translate("month")} ");
       }
 
       if (timeSpan.Days > 0 && result.ToString().Length != 0)
       {
-        result.Append($"{remainingDays} day{Plural((int)remainingDays)} ");
+        result.Append($"{remainingDays} {Translate("day")}{Plural((int)remainingDays)} ");
       }
 
       if (timeSpan.Days > 0 && result.ToString().Length == 0)
       {
-        result.Append($"{timeSpan.Days} day{Plural(timeSpan.Days)} ");
+        result.Append($"{timeSpan.Days} {Translate("day")}{Plural(timeSpan.Days)} ");
       }
 
       if (timeSpan.Hours > 0)
       {
-        result.Append($"{timeSpan.Hours} hour{Plural(timeSpan.Hours)} ");
+        result.Append($"{timeSpan.Hours} {Translate("hour")}{Plural(timeSpan.Hours)} ");
       }
 
       if (timeSpan.Minutes > 0)
       {
-        result.Append($"{timeSpan.Minutes} minute{Plural(timeSpan.Minutes)} ");
+        result.Append($"{timeSpan.Minutes} {Translate("minute")}{Plural(timeSpan.Minutes)} ");
       }
 
       if (timeSpan.Seconds > 0)
       {
-        result.Append($"{timeSpan.Seconds} second{Plural(timeSpan.Seconds)} ");
+        result.Append($"{timeSpan.Seconds} {Translate("second")}{Plural(timeSpan.Seconds)} ");
       }
 
       if (timeSpan.Milliseconds > 0)
       {
-        result.Append($"{timeSpan.Milliseconds} millisecond{Plural(timeSpan.Milliseconds)}");
+        result.Append($"{timeSpan.Milliseconds} {Translate("millisecond")}{Plural(timeSpan.Milliseconds)}");
       }
 
       return result.ToString();
