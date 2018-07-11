@@ -919,12 +919,12 @@ namespace TimeAgo
       var totalMonths = Math.Truncate((totalDays % 365) / 30);
       var remainingDays = Math.Truncate((totalDays % 365) % 30);
 
-      if (totalYears > 1)
+      if (totalYears > 0)
       {
         result.Append($"{totalYears} year{Plural((int)totalYears)} ");
       }
 
-      if (totalMonths > 1)
+      if (totalMonths > 0)
       {
         result.Append($"{totalMonths} month{Plural((int)totalMonths)} ");
       }
