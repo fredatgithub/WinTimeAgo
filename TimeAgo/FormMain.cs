@@ -697,18 +697,18 @@ namespace TimeAgo
       MessageBox.Show(this, message, title, buttons);
     }
 
-    private string Translate(string index)
+    private string Translate(string word)
     {
       string result = string.Empty;
       switch (_currentLanguage.ToLower())
       {
         case "english":
-          result = LanguageDicoEn.ContainsKey(index) ? LanguageDicoEn[index] :
-           "the term: \"" + index + "\" has not been translated yet.\nPlease tell the developer to translate this term";
+          result = LanguageDicoEn.ContainsKey(word) ? LanguageDicoEn[word] :
+           "the term: \"" + word + "\" has not been translated yet.\nPlease tell the developer to translate this term";
           break;
         case "french":
-          result = LanguageDicoFr.ContainsKey(index) ? LanguageDicoFr[index] :
-            "the term: \"" + index + "\" has not been translated yet.\nPlease tell the developer to translate this term";
+          result = LanguageDicoFr.ContainsKey(word) ? LanguageDicoFr[word] :
+            "the term: \"" + word + "\" has not been translated yet.\nPlease tell the developer to translate this term";
           break;
       }
 
@@ -908,7 +908,7 @@ namespace TimeAgo
       textBoxTimeAgo.Text = CreateTimeSentence((DateTime)listBoxSubItems.SelectedItem);
     }
 
-    public static string CreateTimeSentence(DateTime thedate)
+    public string CreateTimeSentence(DateTime thedate)
     {
       // create a string formatted like 3 days 2 hours ago
       StringBuilder result = new StringBuilder();
@@ -921,7 +921,7 @@ namespace TimeAgo
 
       if (totalYears > 0)
       {
-        result.Append($"{totalYears} year{Plural((int)totalYears)} "); // TODO translation year
+        result.Append($"{totalYears} {Translate("year")}{Plural((int)totalYears)} "); // TODO translation year
       }
 
       if (totalMonths > 0)
