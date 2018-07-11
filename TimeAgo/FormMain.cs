@@ -921,7 +921,7 @@ namespace TimeAgo
 
       if (totalYears > 0)
       {
-        result.Append($"{totalYears} year{Plural((int)totalYears)} ");
+        result.Append($"{totalYears} year{Plural((int)totalYears)} "); // TODO translation year
       }
 
       if (totalMonths > 0)
