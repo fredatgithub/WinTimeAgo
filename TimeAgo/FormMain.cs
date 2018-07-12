@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Ionic.Zip;
 using TimeAgo.Properties;
 
 namespace TimeAgo
@@ -913,7 +914,7 @@ namespace TimeAgo
       // create a string formatted like 3 days 2 hours ago
       StringBuilder result = new StringBuilder();
       TimeSpan timeSpan = DateTime.Now - thedate;
-      
+
       var totalDays = (DateTime.Now - thedate).TotalDays;
       var totalYears = Math.Truncate(totalDays / 365);
       var totalMonths = Math.Truncate((totalDays % 365) / 30);
@@ -921,7 +922,7 @@ namespace TimeAgo
 
       if (totalYears > 0)
       {
-        result.Append($"{totalYears} {Translate("year")}{Plural((int)totalYears)} "); 
+        result.Append($"{totalYears} {Translate("year")}{Plural((int)totalYears)} ");
       }
 
       if (totalMonths > 0)
@@ -995,6 +996,30 @@ namespace TimeAgo
       RefreshAllEvents();
       listBoxSubItems.Items.Clear();
       DataFileHasBeenModified = true;
+    }
+
+    private void backupDataFileToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      // we zip and email the XML datafile
+      ZipFileName(Settings.Default.DataFileName);
+      // email
+
+    }
+
+    private void ZipFileName(string fileName)
+    {
+      try
+      {
+        using (ZipFile zip = new ZipFile())
+        {
+          zip.AddFile(fileName);
+          zip.Save($"{fileName}.zip");
+        }
+      }
+      catch (Exception exception)
+      {
+        DisplayMessage($"Error while zipping the file {fileName}{Environment.NewLine}The exception is {exception.Message}", "Error while zipping", MessageBoxButtons.OK);
+      }
     }
   }
 }

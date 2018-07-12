@@ -72,6 +72,7 @@
       this.textBoxTitle = new System.Windows.Forms.TextBox();
       this.dateTimePickerMain = new System.Windows.Forms.DateTimePicker();
       this.textBoxTimeAgo = new System.Windows.Forms.TextBox();
+      this.backupDataFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -253,7 +254,8 @@
       // 
       this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.personalizeToolStripMenuItem,
-            this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem,
+            this.backupDataFileToolStripMenuItem});
       this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
       this.toolsToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
       this.toolsToolStripMenuItem.Text = "&Outils";
@@ -261,13 +263,13 @@
       // personalizeToolStripMenuItem
       // 
       this.personalizeToolStripMenuItem.Name = "personalizeToolStripMenuItem";
-      this.personalizeToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+      this.personalizeToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
       this.personalizeToolStripMenuItem.Text = "&Personnaliser";
       // 
       // optionsToolStripMenuItem
       // 
       this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
       this.optionsToolStripMenuItem.Text = "&Options";
       this.optionsToolStripMenuItem.Click += new System.EventHandler(this.OptionsToolStripMenuItemClick);
       // 
@@ -440,6 +442,13 @@
       this.textBoxTimeAgo.Size = new System.Drawing.Size(552, 26);
       this.textBoxTimeAgo.TabIndex = 8;
       // 
+      // backupDataFileToolStripMenuItem
+      // 
+      this.backupDataFileToolStripMenuItem.Name = "backupDataFileToolStripMenuItem";
+      this.backupDataFileToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+      this.backupDataFileToolStripMenuItem.Text = "Backup DataFile";
+      this.backupDataFileToolStripMenuItem.Click += new System.EventHandler(this.backupDataFileToolStripMenuItem_Click);
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,5 +522,6 @@
     private System.Windows.Forms.TextBox textBoxTitle;
     private System.Windows.Forms.DateTimePicker dateTimePickerMain;
     private System.Windows.Forms.TextBox textBoxTimeAgo;
+    private System.Windows.Forms.ToolStripMenuItem backupDataFileToolStripMenuItem;
   }
 }
