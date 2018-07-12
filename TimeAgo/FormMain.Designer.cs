@@ -73,6 +73,7 @@
       this.dateTimePickerMain = new System.Windows.Forms.DateTimePicker();
       this.textBoxTimeAgo = new System.Windows.Forms.TextBox();
       this.backupDataFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.openDataFileLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -255,7 +256,8 @@
       this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.personalizeToolStripMenuItem,
             this.optionsToolStripMenuItem,
-            this.backupDataFileToolStripMenuItem});
+            this.backupDataFileToolStripMenuItem,
+            this.openDataFileLocationToolStripMenuItem});
       this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
       this.toolsToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
       this.toolsToolStripMenuItem.Text = "&Outils";
@@ -449,6 +451,13 @@
       this.backupDataFileToolStripMenuItem.Text = "Backup DataFile";
       this.backupDataFileToolStripMenuItem.Click += new System.EventHandler(this.backupDataFileToolStripMenuItem_Click);
       // 
+      // openDataFileLocationToolStripMenuItem
+      // 
+      this.openDataFileLocationToolStripMenuItem.Name = "openDataFileLocationToolStripMenuItem";
+      this.openDataFileLocationToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+      this.openDataFileLocationToolStripMenuItem.Text = "Open DataFile Location";
+      this.openDataFileLocationToolStripMenuItem.Click += new System.EventHandler(this.openDataFileLocationToolStripMenuItem_Click);
+      // 
       // FormMain
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,5 +532,6 @@
     private System.Windows.Forms.DateTimePicker dateTimePickerMain;
     private System.Windows.Forms.TextBox textBoxTimeAgo;
     private System.Windows.Forms.ToolStripMenuItem backupDataFileToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem openDataFileLocationToolStripMenuItem;
   }
 }

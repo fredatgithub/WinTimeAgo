@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -927,7 +929,7 @@ namespace TimeAgo
 
       if (totalMonths > 0)
       {
-        result.Append($"{totalMonths} {Translate("month")} ");
+        result.Append($"{totalMonths} {Translate("month")}{Plural((int)totalMonths, _currentLanguage)} ");
       }
 
       if (timeSpan.Days > 0 && result.ToString().Length != 0)
@@ -963,9 +965,9 @@ namespace TimeAgo
       return result.ToString();
     }
 
-    private static string Plural(int number)
+    private static string Plural(int number, string language = "english")
     {
-      return number > 1 ? "s" : string.Empty;
+      return number > 1 ? language == "french" ? "" : "s" : string.Empty;
     }
 
     private void UpdateSubList()
@@ -1000,14 +1002,20 @@ namespace TimeAgo
 
     private void backupDataFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      // we zip and email the XML datafile
-      ZipFileName(Settings.Default.DataFileName);
-      // email
-
+      // we zip the XML datafile
+      bool backupsuccessfull = ZipFileName(Settings.Default.DataFileName);
+      DisplayMessage($"The backup of the data file was {Negate(backupsuccessfull)}successfull",
+        backupsuccessfull ? "Backup successfull" : "Error backup", MessageBoxButtons.OK);
     }
 
-    private void ZipFileName(string fileName)
+    private static string Negate(bool yesOrNot)
     {
+      return yesOrNot ? string.Empty : "not ";
+    }
+
+    private bool ZipFileName(string fileName)
+    {
+      bool result = false;
       try
       {
         using (ZipFile zip = new ZipFile())
@@ -1015,11 +1023,55 @@ namespace TimeAgo
           zip.AddFile(fileName);
           zip.Save($"{fileName}.zip");
         }
+
+        result = true;
       }
       catch (Exception exception)
       {
         DisplayMessage($"Error while zipping the file {fileName}{Environment.NewLine}The exception is {exception.Message}", "Error while zipping", MessageBoxButtons.OK);
+        result = false;
       }
+
+      return result;
+    }
+
+    private void openDataFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (SendMail("Message"))
+      {
+        DisplayMessage("the mail was sent correctly", "mail ok", MessageBoxButtons.OK);
+      }
+    }
+    
+    public static bool SendMail(string message)
+    {
+      bool result = false;
+      MailMessage mailMessage = new MailMessage {From = new MailAddress("sender@isp.fr") };
+      mailMessage.To.Add(new MailAddress("addressee@isp.fr"));
+      mailMessage.Subject = "Password Recover";
+      mailMessage.Body = message;
+
+      SmtpClient client = new SmtpClient
+      {
+        Host = "smtp.isp.fr",
+        Port = 25,
+        Timeout = 10000,
+        UseDefaultCredentials = false,
+        DeliveryMethod = SmtpDeliveryMethod.Network,
+        EnableSsl = true,
+        Credentials = new NetworkCredential("username", "password"),
+    };
+      try
+      {
+        client.Send(mailMessage);
+        result = true;
+      }
+      catch (Exception)
+      {
+        result = false;
+      }
+
+      return result;
     }
   }
 }
