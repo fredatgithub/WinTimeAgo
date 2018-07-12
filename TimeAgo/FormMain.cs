@@ -967,7 +967,7 @@ namespace TimeAgo
 
     private static string Plural(int number, string language = "english")
     {
-      return number > 1 ? language == "french" ? "" : "s" : string.Empty;
+      return number > 1 ? language.ToLower() == "french" ? "" : "s" : string.Empty;
     }
 
     private void UpdateSubList()
