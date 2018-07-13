@@ -1,4 +1,5 @@
 ﻿#define DEBUG
+using Ionic.Zip;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,7 +11,6 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using Ionic.Zip;
 using TimeAgo.Properties;
 
 namespace TimeAgo
