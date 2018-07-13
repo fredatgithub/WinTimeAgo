@@ -1037,10 +1037,18 @@ namespace TimeAgo
 
     private void openDataFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      if (SendMail("Message"))
+      Process task = new Process
       {
-        DisplayMessage("the mail was sent correctly", "mail ok", MessageBoxButtons.OK);
-      }
+        StartInfo =
+        {
+          UseShellExecute = true,
+          FileName = "Explorer.exe",
+          Arguments =  "c:\\",
+          CreateNoWindow = false
+        }
+      };
+
+      task.Start();
     }
     
     public static bool SendMail(string message)
@@ -1072,6 +1080,14 @@ namespace TimeAgo
       }
 
       return result;
+    }
+
+    private void emailDataFileToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (SendMail("test message"))
+      {
+        DisplayMessage("the mail was sent correctly", "mail ok", MessageBoxButtons.OK);
+      }
     }
   }
 }
