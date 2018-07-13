@@ -1037,13 +1037,14 @@ namespace TimeAgo
 
     private void openDataFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
     {
+      var tmp = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
       Process task = new Process
       {
         StartInfo =
         {
           UseShellExecute = true,
           FileName = "Explorer.exe",
-          Arguments =  "c:\\",
+          Arguments =  Assembly.GetExecutingAssembly().Location,
           CreateNoWindow = false
         }
       };
