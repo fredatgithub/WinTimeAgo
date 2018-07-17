@@ -282,14 +282,14 @@
       this.backupDataFileToolStripMenuItem.Name = "backupDataFileToolStripMenuItem";
       this.backupDataFileToolStripMenuItem.Size = new System.Drawing.Size(280, 30);
       this.backupDataFileToolStripMenuItem.Text = "Backup DataFile";
-      this.backupDataFileToolStripMenuItem.Click += new System.EventHandler(this.backupDataFileToolStripMenuItem_Click);
+      this.backupDataFileToolStripMenuItem.Click += new System.EventHandler(this.BackupDataFileToolStripMenuItem_Click);
       // 
       // openDataFileLocationToolStripMenuItem
       // 
       this.openDataFileLocationToolStripMenuItem.Name = "openDataFileLocationToolStripMenuItem";
       this.openDataFileLocationToolStripMenuItem.Size = new System.Drawing.Size(280, 30);
       this.openDataFileLocationToolStripMenuItem.Text = "Open DataFile Location";
-      this.openDataFileLocationToolStripMenuItem.Click += new System.EventHandler(this.openDataFileLocationToolStripMenuItem_Click);
+      this.openDataFileLocationToolStripMenuItem.Click += new System.EventHandler(this.OpenDataFileLocationToolStripMenuItem_Click);
       // 
       // languagetoolStripMenuItem
       // 
@@ -413,7 +413,7 @@
       this.listBoxMain.Name = "listBoxMain";
       this.listBoxMain.Size = new System.Drawing.Size(392, 381);
       this.listBoxMain.TabIndex = 3;
-      this.listBoxMain.SelectedIndexChanged += new System.EventHandler(this.listBoxMain_SelectedIndexChanged);
+      this.listBoxMain.SelectedIndexChanged += new System.EventHandler(this.ListBoxMain_SelectedIndexChanged);
       // 
       // listBoxSubItems
       // 
@@ -436,7 +436,7 @@
       this.buttonDelete.TabIndex = 5;
       this.buttonDelete.Text = "DELETE THIS EVENT";
       this.buttonDelete.UseVisualStyleBackColor = true;
-      this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+      this.buttonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
       // 
       // textBoxTitle
       // 
@@ -472,7 +472,7 @@
       this.emailDataFileToolStripMenuItem.Name = "emailDataFileToolStripMenuItem";
       this.emailDataFileToolStripMenuItem.Size = new System.Drawing.Size(280, 30);
       this.emailDataFileToolStripMenuItem.Text = "E-mail DataFile";
-      this.emailDataFileToolStripMenuItem.Click += new System.EventHandler(this.emailDataFileToolStripMenuItem_Click);
+      this.emailDataFileToolStripMenuItem.Click += new System.EventHandler(this.EmailDataFileToolStripMenuItem_Click);
       // 
       // FormMain
       // 
