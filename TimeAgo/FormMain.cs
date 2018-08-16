@@ -893,7 +893,7 @@ namespace TimeAgo
       }
     }
 
-    private void listBoxMain_SelectedIndexChanged(object sender, EventArgs e)
+    private void ListBoxMain_SelectedIndexChanged(object sender, EventArgs e)
     {
       if (!listBoxSubItems.Visible)
       {
@@ -986,7 +986,7 @@ namespace TimeAgo
       }
     }
 
-    private void buttonDelete_Click(object sender, EventArgs e)
+    private void ButtonDelete_Click(object sender, EventArgs e)
     {
       if (MessageBox.Show("Are you sure you want to remove this Event?", "Confirmation", MessageBoxButtons.YesNo) !=
           DialogResult.Yes)
@@ -1000,7 +1000,7 @@ namespace TimeAgo
       DataFileHasBeenModified = true;
     }
 
-    private void backupDataFileToolStripMenuItem_Click(object sender, EventArgs e)
+    private void BackupDataFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
       // we zip the XML datafile
       bool backupsuccessfull = ZipFileName(Settings.Default.DataFileName);
@@ -1035,7 +1035,7 @@ namespace TimeAgo
       return result;
     }
 
-    private void openDataFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
+    private void OpenDataFileLocationToolStripMenuItem_Click(object sender, EventArgs e)
     {
       var workingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
       Process task = new Process
@@ -1083,7 +1083,7 @@ namespace TimeAgo
       return result;
     }
 
-    private void emailDataFileToolStripMenuItem_Click(object sender, EventArgs e)
+    private void EmailDataFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
       if (SendMail("test message", "smtp.isp.fr", "username", "password"))
       {
