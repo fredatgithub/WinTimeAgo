@@ -1052,7 +1052,7 @@ namespace TimeAgo
       task.Start();
     }
     
-    public static bool SendMail(string message)
+    public static bool SendMail(string message, string hostServer, string userName, string password)
     {
       bool result = false;
       MailMessage mailMessage = new MailMessage {From = new MailAddress("sender@isp.fr") };
@@ -1062,13 +1062,13 @@ namespace TimeAgo
 
       SmtpClient client = new SmtpClient
       {
-        Host = "smtp.isp.fr",
+        Host = hostServer, // "smtp.isp.fr",
         Port = 25,
         Timeout = 10000,
         UseDefaultCredentials = false,
         DeliveryMethod = SmtpDeliveryMethod.Network,
         EnableSsl = true,
-        Credentials = new NetworkCredential("username", "password"),
+        Credentials = new NetworkCredential(userName, password)
     };
       try
       {
@@ -1085,7 +1085,7 @@ namespace TimeAgo
 
     private void emailDataFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      if (SendMail("test message"))
+      if (SendMail("test message", "smtp.isp.fr", "username", "password"))
       {
         DisplayMessage("the mail was sent correctly", "mail ok", MessageBoxButtons.OK);
       }
