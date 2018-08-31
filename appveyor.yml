@@ -33,8 +33,6 @@ install:
   #- ps: Write-Host 'This is PowerShell'
   ps: Set-Culture fr-FR
 
-#EnableNuGetPackageRestore: true
-
 build:
   # MSBuild verbosity level
   #verbosity: quiet|minimal|normal|detailed
