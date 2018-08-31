@@ -245,6 +245,7 @@ namespace TimeAgo
         CreateLanguageFile();
         return;
       }
+
       var result = from node in xDoc.Descendants("term")
                    where node.HasElements
                    let xElementName = node.Element("name")
