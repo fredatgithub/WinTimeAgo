@@ -12,9 +12,8 @@ namespace UnitTestTimeAgo
     {
       DateTime source = DateTime.Now.AddMinutes(-1);
       string expected = $"1 minute";
-      //string result = FormMain.CreateTimeSentence(source);
-      //Assert.AreEqual(expected, result);
-      Assert.IsTrue(true);
+      string result = FormMain.CreateTimeSentenceUS(source);
+      Assert.IsTrue(result.StartsWith(expected));
     }
   }
 }

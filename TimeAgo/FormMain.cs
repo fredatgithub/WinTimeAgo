@@ -912,13 +912,13 @@ namespace TimeAgo
       textBoxTimeAgo.Text = CreateTimeSentence((DateTime)listBoxSubItems.SelectedItem);
     }
 
-    public string CreateTimeSentence(DateTime thedate)
+    public string CreateTimeSentence(DateTime theDate)
     {
       // create a string formatted like 3 days 2 hours ago
       StringBuilder result = new StringBuilder();
-      TimeSpan timeSpan = DateTime.Now - thedate;
+      TimeSpan timeSpan = DateTime.Now - theDate;
 
-      var totalDays = (DateTime.Now - thedate).TotalDays;
+      var totalDays = (DateTime.Now - theDate).TotalDays;
       var totalYears = Math.Truncate(totalDays / 365);
       var totalMonths = Math.Truncate((totalDays % 365) / 30);
       var remainingDays = Math.Truncate((totalDays % 365) % 30);
@@ -961,6 +961,60 @@ namespace TimeAgo
       if (timeSpan.Milliseconds > 0)
       {
         result.Append($"{timeSpan.Milliseconds} {Translate("millisecond")}{Plural(timeSpan.Milliseconds)}");
+      }
+
+      return result.ToString();
+    }
+
+    public static string CreateTimeSentenceUS(DateTime theDate)
+    {
+      // create a string formatted like 3 days 2 hours ago
+      StringBuilder result = new StringBuilder();
+      TimeSpan timeSpan = DateTime.Now - theDate;
+
+      var totalDays = (DateTime.Now - theDate).TotalDays;
+      var totalYears = Math.Truncate(totalDays / 365);
+      var totalMonths = Math.Truncate((totalDays % 365) / 30);
+      var remainingDays = Math.Truncate((totalDays % 365) % 30);
+
+      if (totalYears > 0)
+      {
+        result.Append($"{totalYears} {"year"}{Plural((int)totalYears)} ");
+      }
+
+      if (totalMonths > 0)
+      {
+        result.Append($"{totalMonths} {"month"}{Plural((int)totalMonths)} ");
+      }
+
+      if (timeSpan.Days > 0 && result.ToString().Length != 0)
+      {
+        result.Append($"{remainingDays} {"day"}{Plural((int)remainingDays)} ");
+      }
+
+      if (timeSpan.Days > 0 && result.ToString().Length == 0)
+      {
+        result.Append($"{timeSpan.Days} {"day"}{Plural(timeSpan.Days)} ");
+      }
+
+      if (timeSpan.Hours > 0)
+      {
+        result.Append($"{timeSpan.Hours} {"hour"}{Plural(timeSpan.Hours)} ");
+      }
+
+      if (timeSpan.Minutes > 0)
+      {
+        result.Append($"{timeSpan.Minutes} {"minute"}{Plural(timeSpan.Minutes)} ");
+      }
+
+      if (timeSpan.Seconds > 0)
+      {
+        result.Append($"{timeSpan.Seconds} {"second"}{Plural(timeSpan.Seconds)} ");
+      }
+
+      if (timeSpan.Milliseconds > 0)
+      {
+        result.Append($"{timeSpan.Milliseconds} {"millisecond"}{Plural(timeSpan.Milliseconds)}");
       }
 
       return result.ToString();
