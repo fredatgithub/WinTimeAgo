@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TimeAgo;
 using System;
+using TimeAgo;
 
 namespace UnitTestTimeAgo
 {
