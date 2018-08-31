@@ -33,7 +33,7 @@ install:
   #- ps: Write-Host 'This is PowerShell'
   ps: Set-Culture fr-FR
 
-EnableNuGetPackageRestore: true
+#EnableNuGetPackageRestore: true
 
 build:
   # MSBuild verbosity level
@@ -43,7 +43,8 @@ build:
   project: TimeAgo.sln
 
 # scripts to run before build
-#before_build:
+before_build: 
+ nuget restore
  
 # scripts to run after build
 #after_build:
