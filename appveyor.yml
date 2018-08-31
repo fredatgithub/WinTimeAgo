@@ -38,6 +38,9 @@ build:
   #verbosity: quiet|minimal|normal|detailed
   verbosity: detailed
   parallel: true  
+  build:
+  project: WinTimeAgo/TimeAgo.sln
+   
 
 # scripts to run before build
 #before_build:
