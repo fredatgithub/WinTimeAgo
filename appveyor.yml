@@ -36,7 +36,7 @@ install:
 build:
   # MSBuild verbosity level
   #verbosity: quiet|minimal|normal|detailed
-  verbosity: detailed
+  verbosity: minimal
   parallel: true  
   project: TimeAgo.sln
 
