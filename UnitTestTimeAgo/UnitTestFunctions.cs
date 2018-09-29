@@ -12,7 +12,7 @@ namespace UnitTestTimeAgo
     {
       DateTime source = DateTime.Now.AddMinutes(-1);
       string expected = $"1 minute";
-      string result = FormMain.CreateTimeSentenceUS(source);
+      string result = FormMain.CreateTimeSentenceUs(source);
       Assert.IsTrue(result.StartsWith(expected));
     }
 
@@ -21,7 +21,7 @@ namespace UnitTestTimeAgo
     {
       DateTime source = DateTime.Now.AddMinutes(-2);
       string expected = $"2 minutes";
-      string result = FormMain.CreateTimeSentenceUS(source);
+      string result = FormMain.CreateTimeSentenceUs(source);
       Assert.IsTrue(result.StartsWith(expected));
     }
   }

@@ -966,7 +966,7 @@ namespace TimeAgo
       return result.ToString();
     }
 
-    public static string CreateTimeSentenceUS(DateTime theDate)
+    public static string CreateTimeSentenceUs(DateTime theDate)
     {
       // create a string formatted like 3 days 2 hours ago
       StringBuilder result = new StringBuilder();
@@ -979,42 +979,42 @@ namespace TimeAgo
 
       if (totalYears > 0)
       {
-        result.Append($"{totalYears} {"year"}{Plural((int)totalYears)} ");
+        result.Append($"{totalYears} year{Plural((int)totalYears)} ");
       }
 
       if (totalMonths > 0)
       {
-        result.Append($"{totalMonths} {"month"}{Plural((int)totalMonths)} ");
+        result.Append($"{totalMonths} month{Plural((int)totalMonths)} ");
       }
 
       if (timeSpan.Days > 0 && result.ToString().Length != 0)
       {
-        result.Append($"{remainingDays} {"day"}{Plural((int)remainingDays)} ");
+        result.Append($"{remainingDays} day{Plural((int)remainingDays)} ");
       }
 
       if (timeSpan.Days > 0 && result.ToString().Length == 0)
       {
-        result.Append($"{timeSpan.Days} {"day"}{Plural(timeSpan.Days)} ");
+        result.Append($"{timeSpan.Days} day{Plural(timeSpan.Days)} ");
       }
 
       if (timeSpan.Hours > 0)
       {
-        result.Append($"{timeSpan.Hours} {"hour"}{Plural(timeSpan.Hours)} ");
+        result.Append($"{timeSpan.Hours} hour{Plural(timeSpan.Hours)} ");
       }
 
       if (timeSpan.Minutes > 0)
       {
-        result.Append($"{timeSpan.Minutes} {"minute"}{Plural(timeSpan.Minutes)} ");
+        result.Append($"{timeSpan.Minutes} minute{Plural(timeSpan.Minutes)} ");
       }
 
       if (timeSpan.Seconds > 0)
       {
-        result.Append($"{timeSpan.Seconds} {"second"}{Plural(timeSpan.Seconds)} ");
+        result.Append($"{timeSpan.Seconds} second{Plural(timeSpan.Seconds)} ");
       }
 
       if (timeSpan.Milliseconds > 0)
       {
-        result.Append($"{timeSpan.Milliseconds} {"millisecond"}{Plural(timeSpan.Milliseconds)}");
+        result.Append($"{timeSpan.Milliseconds} millisecond{Plural(timeSpan.Milliseconds)}");
       }
 
       return result.ToString();
@@ -1144,6 +1144,29 @@ namespace TimeAgo
       {
         DisplayMessage("the mail was sent correctly", "mail ok", MessageBoxButtons.OK);
       }
+    }
+
+    private void listBoxSubItems_SelectedIndexChanged(object sender, EventArgs e)
+    {
+      // update time ago of the selected item
+      if (!buttonDelete.Visible)
+      {
+        buttonDelete.Visible = true;
+      }
+
+      textBoxTitle.Text = listBoxMain.SelectedItem.ToString();
+      textBoxTimeAgo.Text = CreateTimeSentence((DateTime)listBoxSubItems.SelectedItem);
+      dateTimePickerSubItems.Value = DateTime.Parse(listBoxSubItems.SelectedItem.ToString());
+    }
+
+    private void buttonChangeSubItem_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void buttonDeleteSubItemEventDate_Click(object sender, EventArgs e)
+    {
+
     }
   }
 }
