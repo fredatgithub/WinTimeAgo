@@ -1176,15 +1176,20 @@ namespace TimeAgo
 
     private void ChangeEvent(string theKey, DateTime oldValue, DateTime newValue)
     {
-      foreach (KeyValuePair<string, List<Event>> oneEvent in AllEvent.GlobalListOfEvents)
+      foreach (KeyValuePair<string, List<Event>> oneEventList in AllEvent.GlobalListOfEvents)
       {
-        if (oneEvent.Key == theKey)
+        if (oneEventList.Key == theKey)
         {
-          var tmpList = oneEvent.Value;
-          if (tmpList.Contains(new Event(theKey, oldValue)))
+          var tmpList = oneEventList.Value;
+          foreach (Event oneEvent in tmpList)
           {
-            var t = "debug var";
+            if (oneEvent.DateOfEvent == oldValue)
+            {
+              var t = "debug var";
+              // saving the item found
+            }
           }
+          
         }
       }
     }
