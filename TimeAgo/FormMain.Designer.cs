@@ -482,6 +482,7 @@
       // 
       // buttonDeleteSubItemEventDate
       // 
+      this.buttonDeleteSubItemEventDate.Enabled = false;
       this.buttonDeleteSubItemEventDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonDeleteSubItemEventDate.Location = new System.Drawing.Point(296, 445);
       this.buttonDeleteSubItemEventDate.Name = "buttonDeleteSubItemEventDate";
@@ -493,6 +494,7 @@
       // 
       // buttonChangeSubItem
       // 
+      this.buttonChangeSubItem.Enabled = false;
       this.buttonChangeSubItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonChangeSubItem.Location = new System.Drawing.Point(296, 409);
       this.buttonChangeSubItem.Name = "buttonChangeSubItem";
@@ -519,7 +521,7 @@
       this.Controls.Add(this.buttonAdd);
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
-      this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+      this.Margin = new System.Windows.Forms.Padding(2);
       this.Name = "FormMain";
       this.ShowIcon = false;
       this.Text = "Time ago";

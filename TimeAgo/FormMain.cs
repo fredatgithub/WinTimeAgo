@@ -27,7 +27,7 @@ namespace TimeAgo
     public readonly Dictionary<string, string> DataFile = new Dictionary<string, string>();
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
-    private readonly GlobalList AllEvent = new GlobalList();
+    private GlobalList AllEvent = new GlobalList();
     private bool DataFileHasBeenModified = false;
 
     private void QuitToolStripMenuItemClick(object sender, EventArgs e)
@@ -906,6 +906,8 @@ namespace TimeAgo
         buttonDelete.Visible = true;
       }
 
+      buttonChangeSubItem.Enabled = true;
+      buttonDeleteSubItemEventDate.Enabled = true;
       UpdateSubList();
       textBoxTitle.Text = listBoxMain.SelectedItem.ToString();
       listBoxSubItems.SelectedIndex = 0;
@@ -1161,11 +1163,42 @@ namespace TimeAgo
 
     private void buttonChangeSubItem_Click(object sender, EventArgs e)
     {
+      if (listBoxSubItems.SelectedIndex == -1)
+      {
+        DisplayMessage("Vous devez sélectionner un item", "Pas de sélection", MessageBoxButtons.OK);
+        return;
+      }
 
+      // changing the date of the selected sub item
+      DateTime theDate = dateTimePickerSubItems.Value;
+      ChangeEvent(listBoxMain.SelectedItem.ToString(), DateTime.Parse(listBoxSubItems.SelectedItem.ToString()), dateTimePickerSubItems.Value);
+    }
+
+    private void ChangeEvent(string theKey, DateTime oldValue, DateTime newValue)
+    {
+      foreach (KeyValuePair<string, List<Event>> oneEvent in AllEvent.GlobalListOfEvents)
+      {
+        if (oneEvent.Key == theKey)
+        {
+          var tmpList = oneEvent.Value;
+          if (tmpList.Contains(new Event(theKey, oldValue)))
+          {
+            var t = "debug var";
+          }
+        }
+      }
     }
 
     private void buttonDeleteSubItemEventDate_Click(object sender, EventArgs e)
     {
+      if (listBoxSubItems.SelectedIndex == -1)
+      {
+        DisplayMessage("Vous devez sélectionner un item", "Pas de sélection", MessageBoxButtons.OK);
+        return;
+      }
+
+      // deleting the selected sub item
+      var t = "debug var";
 
     }
   }
