@@ -474,7 +474,7 @@
       // dateTimePickerSubItems
       // 
       this.dateTimePickerSubItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dateTimePickerSubItems.Location = new System.Drawing.Point(296, 378);
+      this.dateTimePickerSubItems.Location = new System.Drawing.Point(316, 378);
       this.dateTimePickerSubItems.Name = "dateTimePickerSubItems";
       this.dateTimePickerSubItems.Size = new System.Drawing.Size(263, 26);
       this.dateTimePickerSubItems.TabIndex = 11;
@@ -484,7 +484,7 @@
       // 
       this.buttonDeleteSubItemEventDate.Enabled = false;
       this.buttonDeleteSubItemEventDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonDeleteSubItemEventDate.Location = new System.Drawing.Point(296, 445);
+      this.buttonDeleteSubItemEventDate.Location = new System.Drawing.Point(316, 445);
       this.buttonDeleteSubItemEventDate.Name = "buttonDeleteSubItemEventDate";
       this.buttonDeleteSubItemEventDate.Size = new System.Drawing.Size(263, 25);
       this.buttonDeleteSubItemEventDate.TabIndex = 10;
@@ -496,7 +496,7 @@
       // 
       this.buttonChangeSubItem.Enabled = false;
       this.buttonChangeSubItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonChangeSubItem.Location = new System.Drawing.Point(296, 409);
+      this.buttonChangeSubItem.Location = new System.Drawing.Point(316, 409);
       this.buttonChangeSubItem.Name = "buttonChangeSubItem";
       this.buttonChangeSubItem.Size = new System.Drawing.Size(263, 25);
       this.buttonChangeSubItem.TabIndex = 9;
