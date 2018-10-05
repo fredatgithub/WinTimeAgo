@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="ConfigurationOptions.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="Events.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
