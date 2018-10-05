@@ -19,5 +19,15 @@ namespace TimeAgo
         DateOfEvent = (DateTime)dateOfEvent;
       }
     }
+
+    public void ChangeEventTitle(Event theEvent, string theNewTitle)
+    {
+      theEvent.Title = theNewTitle;
+    }
+
+    public void ChangeEventDate(Event theEvent, DateTime theNewDate)
+    {
+      theEvent.DateOfEvent = theNewDate;
+    }
   }
 }

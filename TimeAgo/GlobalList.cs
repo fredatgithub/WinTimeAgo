@@ -23,16 +23,26 @@ namespace TimeAgo
       }
       else
       {
-        GlobalListOfEvents.Add(oneEvent.Title, new List<Event> {new Event(oneEvent.Title, oneEvent.DateOfEvent)});
+        GlobalListOfEvents.Add(oneEvent.Title, new List<Event> { new Event(oneEvent.Title, oneEvent.DateOfEvent) });
       }
     }
 
-    public void RemoveOneEvent(Event theEventToBeRemoved)
+    public void RemoveOneEventList(Event theEventToBeRemoved)
     {
       if (GlobalListOfEvents.ContainsKey(theEventToBeRemoved.Title))
       {
         GlobalListOfEvents.Remove(theEventToBeRemoved.Title);
       }
+    }
+
+    public void RemoveOneSubEvent(Event theSubEventToBeRemoved)
+    {
+      //TODO
+      //if (GlobalListOfEvents.ContainsKey(theSubEventToBeRemoved.Title))
+      //{
+      //  //Backup list and then remove the event to be removed
+      //  GlobalListOfEvents.Remove(theSubEventToBeRemoved.Title);
+      //}
     }
 
     public void ChangeEvent(string theKey, DateTime oldValue, DateTime newValue)
