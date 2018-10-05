@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace TimeAgo
 {
@@ -23,6 +24,34 @@ namespace TimeAgo
       else
       {
         GlobalListOfEvents.Add(oneEvent.Title, new List<Event> {new Event(oneEvent.Title, oneEvent.DateOfEvent)});
+      }
+    }
+
+    public void RemoveOneEvent(Event theEventToBeRemoved)
+    {
+      if (GlobalListOfEvents.ContainsKey(theEventToBeRemoved.Title))
+      {
+        GlobalListOfEvents.Remove(theEventToBeRemoved.Title);
+      }
+    }
+
+    public void ChangeEvent(string theKey, DateTime oldValue, DateTime newValue)
+    {
+      foreach (KeyValuePair<string, List<Event>> oneEventList in GlobalListOfEvents)
+      {
+        if (oneEventList.Key == theKey)
+        {
+          var tmpList = oneEventList.Value;
+          foreach (Event oneEvent in tmpList)
+          {
+            if (oneEvent.DateOfEvent == oldValue)
+            {
+              var t = "debug var";
+              // saving the item found
+            }
+          }
+
+        }
       }
     }
   }
