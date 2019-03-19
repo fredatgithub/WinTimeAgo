@@ -28,7 +28,7 @@ namespace TimeAgo
     private string _currentLanguage = "english";
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
     private GlobalList AllEvent = new GlobalList();
-    private bool DataFileHasBeenModified = false;
+    private bool DataFileHasBeenModified;
 
     private void QuitToolStripMenuItemClick(object sender, EventArgs e)
     {
@@ -42,7 +42,7 @@ namespace TimeAgo
       Application.Exit();
     }
 
-    private void SaveDataFile()
+    private void SaveDataFile(bool displayMessage = false)
     {
       //We save all new data to XML file
       try
@@ -87,7 +87,10 @@ namespace TimeAgo
         return;
       }
 
-      DisplayMessage("The data file has been saved correctly", "File Saved", MessageBoxButtons.OK);
+      if (displayMessage)
+      {
+        DisplayMessage("The data file has been saved correctly", "File Saved", MessageBoxButtons.OK);
+      }
     }
 
     private static string CreateTagNode(string title, DateTime dateEvent)
@@ -1108,11 +1111,11 @@ namespace TimeAgo
 
       task.Start();
     }
-    
+
     public static bool SendMail(string message, string hostServer, string userName, string password)
     {
       bool result = false;
-      MailMessage mailMessage = new MailMessage {From = new MailAddress("sender@isp.fr") };
+      MailMessage mailMessage = new MailMessage { From = new MailAddress("sender@isp.fr") };
       mailMessage.To.Add(new MailAddress("addressee@isp.fr"));
       mailMessage.Subject = "Password Recover";
       mailMessage.Body = message;
@@ -1126,7 +1129,7 @@ namespace TimeAgo
         DeliveryMethod = SmtpDeliveryMethod.Network,
         EnableSsl = true,
         Credentials = new NetworkCredential(userName, password)
-    };
+      };
       try
       {
         client.Send(mailMessage);
@@ -1148,7 +1151,7 @@ namespace TimeAgo
       }
     }
 
-    private void listBoxSubItems_SelectedIndexChanged(object sender, EventArgs e)
+    private void ListBoxSubItems_SelectedIndexChanged(object sender, EventArgs e)
     {
       // update time ago of the selected item
       if (!buttonDelete.Visible)
@@ -1161,7 +1164,7 @@ namespace TimeAgo
       dateTimePickerSubItems.Value = DateTime.Parse(listBoxSubItems.SelectedItem.ToString());
     }
 
-    private void buttonChangeSubItem_Click(object sender, EventArgs e)
+    private void ButtonChangeSubItem_Click(object sender, EventArgs e)
     {
       if (listBoxSubItems.SelectedIndex == -1)
       {
@@ -1189,12 +1192,12 @@ namespace TimeAgo
               // saving the item found
             }
           }
-          
+
         }
       }
     }
 
-    private void buttonDeleteSubItemEventDate_Click(object sender, EventArgs e)
+    private void ButtonDeleteSubItemEventDate_Click(object sender, EventArgs e)
     {
       if (listBoxSubItems.SelectedIndex == -1)
       {
@@ -1205,6 +1208,22 @@ namespace TimeAgo
       // deleting the selected sub item
       var t = "debug var";
 
+    }
+
+    private void SaveasToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (DataFileHasBeenModified)
+      {
+        SaveDataFile(true);
+      }
+    }
+
+    private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      if (DataFileHasBeenModified)
+      {
+        SaveDataFile(true);
+      }
     }
   }
 }
