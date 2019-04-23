@@ -118,11 +118,11 @@ namespace TimeAgo
       aboutBoxApplication.ShowDialog();
     }
 
-    private void DisplayTitle()
+    private string DisplayTitle()
     {
       Assembly assembly = Assembly.GetExecutingAssembly();
       FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-      Text += $" V{fvi.FileMajorPart}.{fvi.FileMinorPart}.{fvi.FileBuildPart}.{fvi.FilePrivatePart}";
+      return  $"V{fvi.FileMajorPart}.{fvi.FileMinorPart}.{fvi.FileBuildPart}.{fvi.FilePrivatePart}";
     }
 
     private void FormMainLoad(object sender, EventArgs e)
@@ -133,13 +133,21 @@ namespace TimeAgo
 
     private void LoadSettingsAtStartup()
     {
-      DisplayTitle();
+      Text += $" {DisplayTitle()}";
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
       CheckDataFile();
       LoadList();
       dateTimePickerMain.Value = DateTime.Now;
+      ResizeControls();
+    }
+
+    private void ResizeControls()
+    {
+      // resize list boxes according to number of elements
+      int numberOfLines = 0;
+
     }
 
     private void LoadList()
