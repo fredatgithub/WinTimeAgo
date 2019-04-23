@@ -29,6 +29,8 @@ namespace TimeAgo
     private ConfigurationOptions _configurationOptions = new ConfigurationOptions();
     private GlobalList AllEvent = new GlobalList();
     private bool DataFileHasBeenModified;
+    private int numberOfLines = 0;
+    private int longestLine = 0;
 
     private void QuitToolStripMenuItemClick(object sender, EventArgs e)
     {
@@ -146,7 +148,7 @@ namespace TimeAgo
     private void ResizeControls()
     {
       // resize list boxes according to number of elements
-      int numberOfLines = 0;
+      // compare longestLine with window.size
 
     }
 
@@ -186,9 +188,14 @@ namespace TimeAgo
 
       listBoxMain.Items.Clear();
       listBoxSubItems.Items.Clear();
+      numberOfLines = AllEvent.GlobalListOfEvents.Keys.ToList().Count;
       foreach (string item in AllEvent.GlobalListOfEvents.Keys.ToList())
       {
         listBoxMain.Items.Add(item);
+        if (item.Length > longestLine)
+        {
+          longestLine = item.Length;
+        }
       }
     }
 
