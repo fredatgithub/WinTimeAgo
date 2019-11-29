@@ -1127,13 +1127,15 @@ namespace TimeAgo
       task.Start();
     }
 
-    public static bool SendMail(string message, string hostServer, string userName, string password)
+    public static bool SendMail(string subject, string message, string hostServer, string userName, string password, string senderName, string addressee)
     {
       bool result = false;
-      MailMessage mailMessage = new MailMessage { From = new MailAddress("sender@isp.fr") };
-      mailMessage.To.Add(new MailAddress("addressee@isp.fr"));
-      mailMessage.Subject = "Password Recover";
+      MailMessage mailMessage1 = new MailMessage { From = new MailAddress(senderName) };
+      MailMessage mailMessage = mailMessage1;
+      mailMessage.To.Add(new MailAddress(addressee));
+      mailMessage.Subject = subject;
       mailMessage.Body = message;
+      //mailMessage.Attachments();
 
       SmtpClient client = new SmtpClient
       {
@@ -1160,9 +1162,44 @@ namespace TimeAgo
 
     private void EmailDataFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
-      if (SendMail("test message", "smtp.isp.fr", "username", "password"))
+      string smtpConfigFileName = "smtp-config.txt";
+      if (!File.Exists(smtpConfigFileName))
       {
-        DisplayMessage("the mail was sent correctly", "mail ok", MessageBoxButtons.OK);
+        File.Create(smtpConfigFileName);
+        MessageBox.Show(" You must fill the smtp-config.txt with smtp credentials - smtp.isp.fr username password");
+        return;
+      }
+
+      // reading smtp-config file 
+      List<string> smtpConfigEntries = new List<string>();
+      try
+      {
+        using (StreamReader sr = new StreamReader(smtpConfigFileName))
+        {
+          string line = string.Empty;
+          while ((line = sr.ReadLine()) != null)
+          {
+            smtpConfigEntries.Add(line);
+          }
+        }
+      }
+      catch (Exception exception)
+      {
+        MessageBox.Show($"Problem while reading the smtp config file : {exception.Message}");
+        return;
+      }
+
+      string smtpServer = smtpConfigEntries[0];
+      string username = smtpConfigEntries[1];
+      string password = smtpConfigEntries[2];
+      
+      if (SendMail("backup TimeAgo", "This mail has been sent from the TimeAgo application", smtpServer, username, password, "No-reply@isp.fr", $"{username}@isp.fr"))
+      {
+        DisplayMessage("The mail was sent correctly", "mail ok", MessageBoxButtons.OK);
+      }
+      else
+      {
+        DisplayMessage("The mail was not sent correctly", "mail not ok", MessageBoxButtons.OK);
       }
     }
 
