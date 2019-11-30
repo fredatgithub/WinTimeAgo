@@ -32,5 +32,8 @@
     <Setting Name="DataFileName" Type="System.String" Scope="User">
       <Value Profile="(Default)">DataFile.xml</Value>
     </Setting>
+    <Setting Name="LastBackupDate" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2009-11-30</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -124,7 +125,7 @@ namespace TimeAgo
     {
       Assembly assembly = Assembly.GetExecutingAssembly();
       FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-      return  $"V{fvi.FileMajorPart}.{fvi.FileMinorPart}.{fvi.FileBuildPart}.{fvi.FilePrivatePart}";
+      return $"V{fvi.FileMajorPart}.{fvi.FileMinorPart}.{fvi.FileBuildPart}.{fvi.FilePrivatePart}";
     }
 
     private void FormMainLoad(object sender, EventArgs e)
@@ -1127,7 +1128,7 @@ namespace TimeAgo
       task.Start();
     }
 
-    public static bool SendMail(string subject, string message, string hostServer, string userName, string password, string senderName, string addressee)
+    public static bool SendMail(string subject, string message, string hostServer, string userName, string password, string senderName, string addressee, DateTime lastBackuptime, string fileName = "")
     {
       bool result = false;
       MailMessage mailMessage1 = new MailMessage { From = new MailAddress(senderName) };
@@ -1135,7 +1136,21 @@ namespace TimeAgo
       mailMessage.To.Add(new MailAddress(addressee));
       mailMessage.Subject = subject;
       mailMessage.Body = message;
-      //mailMessage.Attachments();
+      if (fileName != "" || File.Exists(fileName))
+      {
+        // Create  the file attachment for this email message.
+        Attachment data = new Attachment(fileName, MediaTypeNames.Application.Octet);
+        // Add time stamp information for the file.
+        ContentDisposition disposition = data.ContentDisposition;
+        disposition.CreationDate = File.GetCreationTime(fileName);
+        disposition.ModificationDate = File.GetLastWriteTime(fileName);
+        disposition.ReadDate = File.GetLastAccessTime(fileName);
+        // Add the file attachment to this email message.
+        if (disposition.ModificationDate > lastBackuptime)
+        {
+          mailMessage.Attachments.Add(data);
+        }
+      }
 
       SmtpClient client = new SmtpClient
       {
@@ -1152,11 +1167,13 @@ namespace TimeAgo
         client.Send(mailMessage);
         result = true;
       }
-      catch (Exception)
+      catch (Exception exception)
       {
+        Debug.Write(exception.Message);
         result = false;
       }
 
+      client = null;
       return result;
     }
 
@@ -1189,17 +1206,19 @@ namespace TimeAgo
         return;
       }
 
-      string smtpServer = smtpConfigEntries[0];
+      string smtpServer = smtpConfigEntries[0]; // smtp.isp.tld
       string username = smtpConfigEntries[1];
       string password = smtpConfigEntries[2];
-      
-      if (SendMail("backup TimeAgo", "This mail has been sent from the TimeAgo application", smtpServer, username, password, "No-reply@isp.fr", $"{username}@isp.fr"))
+      string senderName = $"No-reply@{smtpServer.Split('.')[1]}.{smtpServer.Split('.')[2]}";
+      string addresse = $"{username}@{smtpServer.Split('.')[1]}.{smtpServer.Split('.')[2]}";
+      string fileName = $"{Settings.Default.DataFileName}.zip";
+      bool mailSentResult = false;
+      mailSentResult = SendMail("backup TimeAgo", "This mail has been sent from the TimeAgo application", smtpServer, username, password, senderName, addresse, Settings.Default.LastBackupDate, fileName);
+      DisplayMessage($"The mail was {Negate(mailSentResult)}sent correctly", $"mail {Negate(mailSentResult)}ok", MessageBoxButtons.OK);
+      if (mailSentResult)
       {
-        DisplayMessage("The mail was sent correctly", "mail ok", MessageBoxButtons.OK);
-      }
-      else
-      {
-        DisplayMessage("The mail was not sent correctly", "mail not ok", MessageBoxButtons.OK);
+        Settings.Default.LastBackupDate = DateTime.Now;
+        Settings.Default.Save();
       }
     }
 
