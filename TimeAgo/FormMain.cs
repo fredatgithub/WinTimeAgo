@@ -663,7 +663,7 @@ namespace TimeAgo
         return;
       }
 
-      if (tb.Text == string.Empty)
+      if (string.IsNullOrEmpty(tb.Text))
       {
         DisplayMessage(Translate("ThereIs") + Punctuation.OneSpace +
           Translate(errorMessage) + Punctuation.OneSpace +
@@ -672,7 +672,7 @@ namespace TimeAgo
         return;
       }
 
-      if (tb.SelectedText == string.Empty)
+      if (string.IsNullOrEmpty(tb.SelectedText))
       {
         DisplayMessage(Translate("NoTextHasBeenSelected"),
           Translate(errorMessage), MessageBoxButtons.OK);
@@ -690,14 +690,14 @@ namespace TimeAgo
         return;
       }
 
-      if (tb.Text == string.Empty)
+      if (string.IsNullOrEmpty(tb.Text))
       {
         DisplayMessage(Translate("ThereIsNothingToCopy") + Punctuation.OneSpace,
           Translate(message), MessageBoxButtons.OK);
         return;
       }
 
-      if (tb.SelectedText == string.Empty)
+      if (string.IsNullOrEmpty(tb.SelectedText))
       {
         DisplayMessage(Translate("NoTextHasBeenSelected"),
           Translate(message), MessageBoxButtons.OK);
@@ -854,7 +854,7 @@ namespace TimeAgo
       {
         if (ctrl.GetType() == typeof(TextBox))
         {
-          if (((TextBox)ctrl).Text == string.Empty)
+          if (string.IsNullOrEmpty(((TextBox)ctrl).Text))
           {
             result = false;
             break;
@@ -885,7 +885,7 @@ namespace TimeAgo
 
     private void ButtonAddClick(object sender, EventArgs e)
     {
-      if (textBoxTitle.Text == string.Empty)
+      if (string.IsNullOrEmpty(textBoxTitle.Text))
       {
         DisplayMessage("A title is necessary", "No Title", MessageBoxButtons.OK);
         return;
@@ -897,6 +897,8 @@ namespace TimeAgo
       listBoxMain.SetSelected(GetIndexOf(textBoxTitle.Text), true);
       UpdateSubList();
       DataFileHasBeenModified = true;
+      // add backup file to do
+      BackupDataFileToolStripMenuItem_Click(sender, e);
     }
 
     private int GetIndexOf(string text)
