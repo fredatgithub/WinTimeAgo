@@ -1209,8 +1209,8 @@ namespace TimeAgo
       }
 
       string smtpServer = smtpConfigEntries[0]; // smtp.isp.tld
-      string username = smtpConfigEntries[1];
-      string password = smtpConfigEntries[2];
+      string username = smtpConfigEntries[1]; // username
+      string password = smtpConfigEntries[2]; // password
       string senderName = $"No-reply@{smtpServer.Split('.')[1]}.{smtpServer.Split('.')[2]}";
       string addresse = $"{username}@{smtpServer.Split('.')[1]}.{smtpServer.Split('.')[2]}";
       string fileName = $"{Settings.Default.DataFileName}.zip";
