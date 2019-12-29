@@ -1184,7 +1184,20 @@ namespace TimeAgo
       string smtpConfigFileName = "smtp-config.txt";
       if (!File.Exists(smtpConfigFileName))
       {
-        File.Create(smtpConfigFileName);
+        try
+        {
+          using (StreamWriter streamWriter = new StreamWriter(smtpConfigFileName))
+          {
+            streamWriter.WriteLine("Replace this line with SMTP.ISP.TLD");
+            streamWriter.WriteLine("Replace this line with the user name");
+            streamWriter.WriteLine("Replace this line with the password");
+          }
+        }
+        catch (Exception exception)
+        {
+          MessageBox.Show($"Erreur pendant la création du fichier smtp-config.txt {exception.Message}");
+        }
+
         MessageBox.Show(" You must fill the smtp-config.txt with smtp credentials - smtp.isp.fr username password");
         return;
       }
