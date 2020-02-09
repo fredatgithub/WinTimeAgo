@@ -1225,10 +1225,10 @@ namespace TimeAgo
       string username = smtpConfigEntries[1]; // username
       string password = smtpConfigEntries[2]; // password
       string senderName = $"No-reply@{smtpServer.Split('.')[1]}.{smtpServer.Split('.')[2]}";
-      string addresse = $"{username}@{smtpServer.Split('.')[1]}.{smtpServer.Split('.')[2]}";
+      string addressee = $"{username}@{smtpServer.Split('.')[1]}.{smtpServer.Split('.')[2]}";
       string fileName = $"{Settings.Default.DataFileName}.zip";
       bool mailSentResult = false;
-      mailSentResult = SendMail("backup TimeAgo", "This mail has been sent from the TimeAgo application", smtpServer, username, password, senderName, addresse, Settings.Default.LastBackupDate, fileName);
+      mailSentResult = SendMail("backup TimeAgo", "This mail has been sent from the TimeAgo application", smtpServer, username, password, senderName, addressee, Settings.Default.LastBackupDate, fileName);
       DisplayMessage($"The mail was {Negate(mailSentResult)}sent correctly", $"mail {Negate(mailSentResult)}ok", MessageBoxButtons.OK);
       if (mailSentResult)
       {
