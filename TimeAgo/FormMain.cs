@@ -1082,13 +1082,13 @@ namespace TimeAgo
     {
       // we zip the XML datafile
       bool backupsuccessfull = ZipFileName(Settings.Default.DataFileName);
-      DisplayMessage($"The backup of the data file was {Negate(backupsuccessfull)}successfull",
-        backupsuccessfull ? "Backup successfull" : "Error backup", MessageBoxButtons.OK);
+      DisplayMessage($"The backup of the data file was {Negate(backupsuccessfull)} successful",
+        backupsuccessfull ? "Backup successful" : "Error backup", MessageBoxButtons.OK);
     }
 
     private static string Negate(bool yesOrNot)
     {
-      return yesOrNot ? string.Empty : "not ";
+      return yesOrNot ? string.Empty : "not";
     }
 
     private bool ZipFileName(string fileName)
@@ -1226,15 +1226,24 @@ namespace TimeAgo
       string password = smtpConfigEntries[2]; // password
       string senderName = $"No-reply@{smtpServer.Split('.')[1]}.{smtpServer.Split('.')[2]}";
       string addressee = $"{username}@{smtpServer.Split('.')[1]}.{smtpServer.Split('.')[2]}";
+      //string fileName = $"{Settings.Default.DataFileName}-V{InverseDateTime(Settings.Default.LastBackupDate)}.zip";
       string fileName = $"{Settings.Default.DataFileName}.zip";
       bool mailSentResult = false;
-      mailSentResult = SendMail("backup TimeAgo", "This mail has been sent from the TimeAgo application", smtpServer, username, password, senderName, addressee, Settings.Default.LastBackupDate, fileName);
-      DisplayMessage($"The mail was {Negate(mailSentResult)}sent correctly", $"mail {Negate(mailSentResult)}ok", MessageBoxButtons.OK);
+      mailSentResult = SendMail("Backup TimeAgo", "This mail has been sent from the TimeAgo application", smtpServer, username, password, senderName, addressee, Settings.Default.LastBackupDate, fileName);
+      DisplayMessage($"The mail was {Negate(mailSentResult)}sent correctly", $"mail {Negate(mailSentResult)} ok", MessageBoxButtons.OK);
       if (mailSentResult)
       {
         Settings.Default.LastBackupDate = DateTime.Now;
         Settings.Default.Save();
       }
+    }
+
+    private object InverseDateTime(DateTime oneDate)
+    {
+      string result = string.Empty;
+      //result = oneDate.ToLongDateString();
+      result = $"{oneDate.Year}{oneDate.Month}{oneDate.Day}";
+      return result;
     }
 
     private void ListBoxSubItems_SelectedIndexChanged(object sender, EventArgs e)
