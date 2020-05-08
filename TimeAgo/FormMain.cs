@@ -121,7 +121,7 @@ namespace TimeAgo
       aboutBoxApplication.ShowDialog();
     }
 
-    private string DisplayTitle()
+    private string GetAssemblyVersion()
     {
       Assembly assembly = Assembly.GetExecutingAssembly();
       FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
@@ -132,11 +132,12 @@ namespace TimeAgo
     {
       //We load all settings at the start of the application
       LoadSettingsAtStartup();
+      //tableLayoutPanelMain.SetRowSpan(tableLayoutPanelMain)
     }
 
     private void LoadSettingsAtStartup()
     {
-      Text += $" {DisplayTitle()}";
+      Text += $" {GetAssemblyVersion()}";
       GetWindowValue();
       LoadLanguages();
       SetLanguage(Settings.Default.LastLanguageUsed);
