@@ -1321,5 +1321,21 @@ namespace TimeAgo
         SaveDataFile(true);
       }
     }
+
+    private void FormMain_ResizeEnd(object sender, EventArgs e)
+    {
+      int minimumWidth = 700;
+      int minimumHeight = 350;
+
+      if (FormMain.ActiveForm.Width < minimumWidth)
+      {
+        FormMain.ActiveForm.Width = minimumWidth;
+      }
+
+      if (FormMain.ActiveForm.Height < minimumHeight)
+      {
+        FormMain.ActiveForm.Height = minimumHeight;
+      }
+    }
   }
 }

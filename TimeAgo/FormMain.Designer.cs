@@ -411,7 +411,7 @@
       this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonAdd.Location = new System.Drawing.Point(3, 629);
       this.buttonAdd.Name = "buttonAdd";
-      this.buttonAdd.Size = new System.Drawing.Size(400, 24);
+      this.buttonAdd.Size = new System.Drawing.Size(446, 24);
       this.buttonAdd.TabIndex = 2;
       this.buttonAdd.Text = "ADD THIS EVENT";
       this.buttonAdd.UseVisualStyleBackColor = true;
@@ -427,7 +427,7 @@
       this.listBoxMain.Location = new System.Drawing.Point(3, 29);
       this.listBoxMain.Name = "listBoxMain";
       this.listBoxMain.ScrollAlwaysVisible = true;
-      this.listBoxMain.Size = new System.Drawing.Size(400, 531);
+      this.listBoxMain.Size = new System.Drawing.Size(446, 531);
       this.listBoxMain.TabIndex = 3;
       this.listBoxMain.SelectedIndexChanged += new System.EventHandler(this.ListBoxMain_SelectedIndexChanged);
       // 
@@ -438,10 +438,10 @@
       this.listBoxSubItems.FormattingEnabled = true;
       this.listBoxSubItems.HorizontalScrollbar = true;
       this.listBoxSubItems.ItemHeight = 20;
-      this.listBoxSubItems.Location = new System.Drawing.Point(409, 29);
+      this.listBoxSubItems.Location = new System.Drawing.Point(455, 29);
       this.listBoxSubItems.Name = "listBoxSubItems";
       this.listBoxSubItems.ScrollAlwaysVisible = true;
-      this.listBoxSubItems.Size = new System.Drawing.Size(492, 531);
+      this.listBoxSubItems.Size = new System.Drawing.Size(446, 531);
       this.listBoxSubItems.TabIndex = 4;
       this.listBoxSubItems.SelectedIndexChanged += new System.EventHandler(this.ListBoxSubItems_SelectedIndexChanged);
       // 
@@ -451,7 +451,7 @@
       this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonDelete.Location = new System.Drawing.Point(3, 659);
       this.buttonDelete.Name = "buttonDelete";
-      this.buttonDelete.Size = new System.Drawing.Size(400, 26);
+      this.buttonDelete.Size = new System.Drawing.Size(446, 26);
       this.buttonDelete.TabIndex = 5;
       this.buttonDelete.Text = "DELETE THIS EVENT";
       this.buttonDelete.UseVisualStyleBackColor = true;
@@ -463,7 +463,7 @@
       this.textBoxTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.textBoxTitle.Location = new System.Drawing.Point(3, 566);
       this.textBoxTitle.Name = "textBoxTitle";
-      this.textBoxTitle.Size = new System.Drawing.Size(400, 26);
+      this.textBoxTitle.Size = new System.Drawing.Size(446, 26);
       this.textBoxTitle.TabIndex = 6;
       // 
       // dateTimePickerMain
@@ -472,7 +472,7 @@
       this.dateTimePickerMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.dateTimePickerMain.Location = new System.Drawing.Point(3, 595);
       this.dateTimePickerMain.Name = "dateTimePickerMain";
-      this.dateTimePickerMain.Size = new System.Drawing.Size(400, 26);
+      this.dateTimePickerMain.Size = new System.Drawing.Size(446, 26);
       this.dateTimePickerMain.TabIndex = 7;
       this.dateTimePickerMain.Value = new System.DateTime(2018, 7, 5, 14, 52, 52, 0);
       // 
@@ -491,9 +491,9 @@
       // 
       this.dateTimePickerSubItems.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dateTimePickerSubItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.dateTimePickerSubItems.Location = new System.Drawing.Point(409, 595);
+      this.dateTimePickerSubItems.Location = new System.Drawing.Point(455, 595);
       this.dateTimePickerSubItems.Name = "dateTimePickerSubItems";
-      this.dateTimePickerSubItems.Size = new System.Drawing.Size(492, 26);
+      this.dateTimePickerSubItems.Size = new System.Drawing.Size(446, 26);
       this.dateTimePickerSubItems.TabIndex = 11;
       this.dateTimePickerSubItems.Value = new System.DateTime(2018, 7, 5, 14, 52, 52, 0);
       // 
@@ -502,9 +502,9 @@
       this.buttonDeleteSubItemEventDate.Dock = System.Windows.Forms.DockStyle.Fill;
       this.buttonDeleteSubItemEventDate.Enabled = false;
       this.buttonDeleteSubItemEventDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonDeleteSubItemEventDate.Location = new System.Drawing.Point(409, 659);
+      this.buttonDeleteSubItemEventDate.Location = new System.Drawing.Point(455, 659);
       this.buttonDeleteSubItemEventDate.Name = "buttonDeleteSubItemEventDate";
-      this.buttonDeleteSubItemEventDate.Size = new System.Drawing.Size(492, 26);
+      this.buttonDeleteSubItemEventDate.Size = new System.Drawing.Size(446, 26);
       this.buttonDeleteSubItemEventDate.TabIndex = 10;
       this.buttonDeleteSubItemEventDate.Text = "DELETE THIS EVENT DATE";
       this.buttonDeleteSubItemEventDate.UseVisualStyleBackColor = true;
@@ -515,9 +515,9 @@
       this.buttonChangeSubItem.Dock = System.Windows.Forms.DockStyle.Fill;
       this.buttonChangeSubItem.Enabled = false;
       this.buttonChangeSubItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.buttonChangeSubItem.Location = new System.Drawing.Point(409, 629);
+      this.buttonChangeSubItem.Location = new System.Drawing.Point(455, 629);
       this.buttonChangeSubItem.Name = "buttonChangeSubItem";
-      this.buttonChangeSubItem.Size = new System.Drawing.Size(492, 24);
+      this.buttonChangeSubItem.Size = new System.Drawing.Size(446, 24);
       this.buttonChangeSubItem.TabIndex = 9;
       this.buttonChangeSubItem.Text = "CHANGE SUB ITEM DATE";
       this.buttonChangeSubItem.UseVisualStyleBackColor = true;
@@ -526,8 +526,8 @@
       // tableLayoutPanelMain
       // 
       this.tableLayoutPanelMain.ColumnCount = 2;
-      this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-      this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+      this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
       this.tableLayoutPanelMain.Controls.Add(this.textBoxTimeAgo, 0, 0);
       this.tableLayoutPanelMain.Controls.Add(this.listBoxMain, 0, 1);
       this.tableLayoutPanelMain.Controls.Add(this.dateTimePickerSubItems, 1, 3);
@@ -565,6 +565,7 @@
       this.Text = "Time ago";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMainFormClosing);
       this.Load += new System.EventHandler(this.FormMainLoad);
+      this.ResizeEnd += new System.EventHandler(this.FormMain_ResizeEnd);
       this.menuStrip1.ResumeLayout(false);
       this.menuStrip1.PerformLayout();
       this.tableLayoutPanelMain.ResumeLayout(false);
