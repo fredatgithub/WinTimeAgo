@@ -85,6 +85,7 @@
       // 
       // menuStrip1
       // 
+      this.menuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption;
       this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
       this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -407,6 +408,7 @@
       // 
       // buttonAdd
       // 
+      this.buttonAdd.BackColor = System.Drawing.SystemColors.Highlight;
       this.buttonAdd.Dock = System.Windows.Forms.DockStyle.Fill;
       this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonAdd.Location = new System.Drawing.Point(3, 629);
@@ -414,7 +416,7 @@
       this.buttonAdd.Size = new System.Drawing.Size(446, 24);
       this.buttonAdd.TabIndex = 2;
       this.buttonAdd.Text = "ADD THIS EVENT";
-      this.buttonAdd.UseVisualStyleBackColor = true;
+      this.buttonAdd.UseVisualStyleBackColor = false;
       this.buttonAdd.Click += new System.EventHandler(this.ButtonAddClick);
       // 
       // listBoxMain
@@ -447,6 +449,7 @@
       // 
       // buttonDelete
       // 
+      this.buttonDelete.BackColor = System.Drawing.SystemColors.MenuHighlight;
       this.buttonDelete.Dock = System.Windows.Forms.DockStyle.Fill;
       this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.buttonDelete.Location = new System.Drawing.Point(3, 659);
@@ -454,7 +457,7 @@
       this.buttonDelete.Size = new System.Drawing.Size(446, 26);
       this.buttonDelete.TabIndex = 5;
       this.buttonDelete.Text = "DELETE THIS EVENT";
-      this.buttonDelete.UseVisualStyleBackColor = true;
+      this.buttonDelete.UseVisualStyleBackColor = false;
       this.buttonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
       // 
       // textBoxTitle
@@ -499,6 +502,7 @@
       // 
       // buttonDeleteSubItemEventDate
       // 
+      this.buttonDeleteSubItemEventDate.BackColor = System.Drawing.SystemColors.MenuHighlight;
       this.buttonDeleteSubItemEventDate.Dock = System.Windows.Forms.DockStyle.Fill;
       this.buttonDeleteSubItemEventDate.Enabled = false;
       this.buttonDeleteSubItemEventDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -507,11 +511,12 @@
       this.buttonDeleteSubItemEventDate.Size = new System.Drawing.Size(446, 26);
       this.buttonDeleteSubItemEventDate.TabIndex = 10;
       this.buttonDeleteSubItemEventDate.Text = "DELETE THIS EVENT DATE";
-      this.buttonDeleteSubItemEventDate.UseVisualStyleBackColor = true;
+      this.buttonDeleteSubItemEventDate.UseVisualStyleBackColor = false;
       this.buttonDeleteSubItemEventDate.Click += new System.EventHandler(this.ButtonDeleteSubItemEventDate_Click);
       // 
       // buttonChangeSubItem
       // 
+      this.buttonChangeSubItem.BackColor = System.Drawing.SystemColors.MenuHighlight;
       this.buttonChangeSubItem.Dock = System.Windows.Forms.DockStyle.Fill;
       this.buttonChangeSubItem.Enabled = false;
       this.buttonChangeSubItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -520,7 +525,7 @@
       this.buttonChangeSubItem.Size = new System.Drawing.Size(446, 24);
       this.buttonChangeSubItem.TabIndex = 9;
       this.buttonChangeSubItem.Text = "CHANGE SUB ITEM DATE";
-      this.buttonChangeSubItem.UseVisualStyleBackColor = true;
+      this.buttonChangeSubItem.UseVisualStyleBackColor = false;
       this.buttonChangeSubItem.Click += new System.EventHandler(this.ButtonChangeSubItem_Click);
       // 
       // tableLayoutPanelMain
