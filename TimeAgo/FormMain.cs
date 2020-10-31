@@ -1089,7 +1089,7 @@ namespace TimeAgo
 
     private static string Negate(bool yesOrNot)
     {
-      return yesOrNot ? string.Empty : "not";
+      return yesOrNot ? string.Empty : "not ";
     }
 
     private bool ZipFileName(string fileName)
@@ -1189,7 +1189,7 @@ namespace TimeAgo
         {
           using (StreamWriter streamWriter = new StreamWriter(smtpConfigFileName))
           {
-            streamWriter.WriteLine("Replace this line with SMTP.ISP.TLD");
+            streamWriter.WriteLine("Replace this line with SMTP.ISP.TLD e.g. smtp.aol.com");
             streamWriter.WriteLine("Replace this line with the user name");
             streamWriter.WriteLine("Replace this line with the password");
           }
