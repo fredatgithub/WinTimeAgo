@@ -1089,7 +1089,7 @@ namespace TimeAgo
 
     private static string Negate(bool yesOrNot)
     {
-      return yesOrNot ? string.Empty : "not";
+      return yesOrNot ? string.Empty : "not ";
     }
 
     private bool ZipFileName(string fileName)
