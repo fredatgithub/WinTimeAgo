@@ -24,5 +24,14 @@ namespace UnitTestTimeAgo
       string result = FormMain.CreateTimeSentenceUs(source);
       Assert.IsTrue(result.StartsWith(expected));
     }
+
+    [TestMethod]
+    public void TestMethodCreateTimeSentence_add_3_minutes()
+    {
+      DateTime source = DateTime.Now.AddMinutes(-3);
+      const string expected = "3 minutes";
+      string result = FormMain.CreateTimeSentenceUs(source);
+      Assert.IsTrue(result.StartsWith(expected));
+    }
   }
 }
