@@ -898,6 +898,7 @@ namespace TimeAgo
       listBoxMain.SetSelected(GetIndexOf(textBoxTitle.Text), true);
       UpdateSubList();
       DataFileHasBeenModified = true;
+      SaveDataFile(true);
       // add backup file to do
       BackupDataFileToolStripMenuItem_Click(sender, e);
     }
