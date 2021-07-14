@@ -933,7 +933,6 @@ namespace TimeAgo
       buttonDeleteSubItemEventDate.Enabled = true;
       UpdateSubList();
       textBoxTitle.Text = listBoxMain.SelectedItem.ToString();
-      listBoxSubItems.SelectedIndex = 0;
       textBoxTimeAgo.Text = CreateTimeSentence((DateTime)listBoxSubItems.SelectedItem);
     }
 
@@ -1064,6 +1063,8 @@ namespace TimeAgo
       {
         listBoxSubItems.Items.Add(item.DateOfEvent);
       }
+
+      listBoxSubItems.SelectedIndex = listBoxSubItems.Items.Count - 1;
     }
 
     private void ButtonDelete_Click(object sender, EventArgs e)
